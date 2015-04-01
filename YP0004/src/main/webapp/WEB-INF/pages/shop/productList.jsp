@@ -81,7 +81,7 @@
                     <li class="col-sm-4 first">
                         <div class="product">
                             <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
+                                <a href="${pageContext.request.contextPath}/product/forwardProduct.action"><img src="http://placehold.it/263x388" alt=""></a>
                                 <a href="#" class="add-to-cart" title="添加到购物车">
                   <span class="fa-stack fa-2x">
                     <i class="fa fa-circle fa-stack-2x"></i>
@@ -101,7 +101,7 @@
                     <li class="col-sm-4">
                         <div class="product">
                             <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
+                                <a href="${pageContext.request.contextPath}/product/forwardProduct.action"><img src="http://placehold.it/263x388" alt=""></a>
                                 <a href="#" class="add-to-cart" title="添加到购物车">
                   <span class="fa-stack fa-2x">
                     <i class="fa fa-circle fa-stack-2x"></i>

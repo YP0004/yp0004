@@ -48,7 +48,7 @@
         </ul>
         <p class="total"><strong>小计:</strong> <span class="amount">$36.00</span></p>
         <p class="buttons">
-            <a class="btn btn-default btn-lg btn-block" href="shopping-cart.html">查看购物车</a>
+            <a class="btn btn-default btn-lg btn-block" href="${pageContext.request.contextPath}/order/forwardShopCar.action">查看购物车</a>
             <a class="btn btn-primary btn-lg btn-block" href="my-account.html">结算</a>
         </p>
     </aside>
