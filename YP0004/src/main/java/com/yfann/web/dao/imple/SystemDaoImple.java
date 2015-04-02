@@ -1,9 +1,13 @@
 package com.yfann.web.dao.imple;
 
 import com.yfann.web.dao.SystemDao;
+import com.yfann.web.dao.common.imple.BaseDaoImple;
+import com.yfann.web.model.User;
+import org.springframework.stereotype.Repository;
 
 /**
- * Created by Simon on 2015/4/1.
+ * 系统Dao
  */
-public class SystemDaoImple implements SystemDao {
+@Repository("systemDao")
+public class SystemDaoImple extends BaseDaoImple<User> implements SystemDao<User> {
 }

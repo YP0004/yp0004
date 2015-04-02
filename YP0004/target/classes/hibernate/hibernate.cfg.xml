@@ -13,7 +13,7 @@
 		</property>
 
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost:3306/365itedu
+			jdbc:mysql://localhost:3306/yp0004
 		</property>
 		<!-- 告诉hibernate链接的是什么数据库 -->
 		<property name="dialect">

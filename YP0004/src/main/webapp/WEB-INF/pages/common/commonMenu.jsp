@@ -38,29 +38,17 @@
                     </li>
                     <li class="dropdown">
                         <a href="${pageContext.request.contextPath}/product/forwardProductList.action">查看课程</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="category.html">Subcat #1</a></li>
-                            <li><a href="category.html">Subcat #2</a></li>
-                            <li><a href="category.html">Subcat #3</a></li>
-                            <li><a href="category.html">Subcat #4</a></li>
-                        </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">最新课程 <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="category.html">Subcat #1</a></li>
-                            <li><a href="category.html">Subcat #2</a></li>
-                            <li><a href="category.html">Subcat #3</a></li>
-                            <li><a href="category.html">Subcat #4</a></li>
-                        </ul>
+                        <a href="category.html">最新课程</a>
                     </li>
                     <li class="dropdown">
                         <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">课程分类 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="category.html">Subcat #1</a></li>
-                            <li><a href="category.html">Subcat #2</a></li>
-                            <li><a href="category.html">Subcat #3</a></li>
-                            <li><a href="category.html">Subcat #4</a></li>
+                            <li><a href="category.html">云计算系列</a></li>
+                            <li><a href="category.html">架构师系列</a></li>
+                            <li><a href="category.html">Web前端</a></li>
+                            <li><a href="category.html">企业级开发系列</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

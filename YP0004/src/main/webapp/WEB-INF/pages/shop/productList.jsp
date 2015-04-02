@@ -45,22 +45,18 @@
                 <aside class="widget widget_product_categories">
                     <h3 class="widget-title">课程分类:</h3>
                     <ul>
-                        <li><a href="#">Clothing</a></li>
-                        <li><a href="#">Feeding Bottles</a></li>
+                        <li><a href="#">架构师系列</a></li>
+                        <li><a href="#">品质管理</a></li>
                         <li>
-                            <a href="#">Diaper</a>
+                            <a href="#">java系列</a>
                             <ul>
-                                <li><a href="#">Infant Clothes</a></li>
-                                <li><a href="#">Educational Toys</a></li>
-                                <li><a href="#">Strollers & Pams</a></li>
-                                <li><a href="#">Creams & Ointments</a></li>
+                                <li><a href="#">Android</a></li>
+                                <li><a href="#">Struts2</a></li>
+                                <li><a href="#">Spring</a></li>
+                                <li><a href="#">Hibernate</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Feeding Bottles</a></li>
-                        <li><a href="#">Clothing</a></li>
-                        <li><a href="#">Infant Clothes</a></li>
-                        <li><a href="#">Educational Toys</a></li>
-                        <li><a href="#">Strollers & Pams</a></li>
+                        <li><a href="#">云计算系列</a></li>
                     </ul>
                 </aside>
 
