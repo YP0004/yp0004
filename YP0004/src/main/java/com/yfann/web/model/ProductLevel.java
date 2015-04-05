@@ -1,11 +1,11 @@
 package com.yfann.web.model;
 
 /**
- * Created by Simon on 2015/4/2.
+ * Created by Simon on 2015/4/4.
  */
-public class ProductKind {
+public class ProductLevel {
     private String id;
-    private String kindName;
+    private String levelName;
 
     public String getId() {
         return id;
@@ -15,14 +15,23 @@ public class ProductKind {
         this.id = id;
     }
 
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ProductKind that = (ProductKind) o;
+        ProductLevel that = (ProductLevel) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (levelName != null ? !levelName.equals(that.levelName) : that.levelName != null) return false;
 
         return true;
     }
@@ -30,14 +39,7 @@ public class ProductKind {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (levelName != null ? levelName.hashCode() : 0);
         return result;
-    }
-
-    public String getKindName() {
-        return kindName;
-    }
-
-    public void setKindName(String kindName) {
-        this.kindName = kindName;
     }
 }

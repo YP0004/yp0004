@@ -17,12 +17,19 @@
 		<property name="configLocation">
 			<value>classpath:hibernate/hibernate.cfg.xml</value>
 		</property>
+
+        <property name="mappingDirectoryLocations">
+            <list>
+                <value>classpath:com/yfann/web/model</value>
+            </list>
+        </property>
 	</bean>
 	
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>
+
 	</bean>
 	
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
@@ -34,7 +41,7 @@
 	<!-- 
 		启动类扫描的注解解析器
 	 -->
-	 <context:component-scan base-package="com.itheima05.oa"></context:component-scan>
+	 <context:component-scan base-package="com.yfann.web"></context:component-scan>
 	 
 	 <!-- 
 	 	启动事务的注解解析器

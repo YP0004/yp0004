@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -47,7 +48,7 @@
             <div class="col-sm-5">
 
                 <div id="product-large" class="owl-carousel">
-                    <div class="item"><img src="http://placehold.it/458x480"></div>
+                    <div class="item"><img src="${pageContext.request.contextPath}/product/takeProductHeadImg.action?id=${product.id}" style="width: 458px;height: 480px;"/></div>
                     <div class="item"><img src="http://placehold.it/458x480"></div>
                     <div class="item"><img src="http://placehold.it/458x480"></div>
                     <div class="item"><img src="http://placehold.it/458x480"></div>
@@ -57,7 +58,7 @@
                     <div class="item"><img src="http://placehold.it/458x480"></div>
                 </div>
                 <div id="product-thumb" class="owl-carousel">
-                    <div class="item"><img src="http://placehold.it/78x78"></div>
+                    <div class="item"><img src="${pageContext.request.contextPath}/product/takeProductHeadImg.action?id=${product.id}" style="width: 78px;height: 78px;"/></div>
                     <div class="item"><img src="http://placehold.it/78x78"></div>
                     <div class="item"><img src="http://placehold.it/78x78"></div>
                     <div class="item"><img src="http://placehold.it/78x78"></div>
@@ -70,17 +71,16 @@
             </div>
             <div class="col-sm-7 summary entry-summary">
 
-                <h1 class="product_title">Tummy Elastic</h1>
+                <h1 class="product_title">${product.productName}</h1>
 
                 <p class="price">
-                    <sup>$</sup><span class="amount">15</span><sup>00</sup>
+                    <sup>￥</sup><span class="amount">${product.productPrice}</span>
                 </p>
 
                 <h3>课程简介</h3>
 
-                <p>Proin gravida nibh vel velit auctor aliquet. Aenean that ino ssollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.</p>
+                <p>${product.productIntroduction}</p>
 
-                <p>Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
 
                 <hr>
 
@@ -129,9 +129,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="description">
-                <p>Aenean that ino ssollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Proin gravida nibh vel velit auctor aliquet. Aenean that ino ssollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.</p>
-
-                <p>Proin gravida nibh vel velit auctor aliquet. Aenean that ino ssollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
+                <p>${product.productDesc}</p>
             </div>
             <div class="tab-pane" id="reviews">
 
@@ -195,15 +193,9 @@
                 <hr>
 
                 <div id="review_form">
-                    <h3 id="reply-title" class="comment-reply-title">Add a Review</h3>
+                    <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
                     <form action="#" id="commentform" class="comment-form">
                         <div class="row">
-                            <p class="comment-form-author col-sm-4">
-                                <input type="text" placeholder="Author *" class="form-control">
-                            </p>
-                            <p class="comment-form-email col-sm-4">
-                                <input type="email" placeholder="Email *" class="form-control">
-                            </p>
                             <p class="comment-form-rating col-sm-4">
                                 <select class="form-control">
                                     <option value="0">Your Rating</option>
@@ -215,8 +207,8 @@
                                 </select>
                             </p>
                         </div>
-                        <p class="comment-form-comment"><textarea name="review" id="review" class="form-control" cols="30" rows="5" placeholder="Your Review"></textarea></p>
-                        <p class="form-submit"><input type="submit" class="btn btn-primary btn-lg" name="proceed" value="Post Review"></p>
+                        <p class="comment-form-comment"><textarea name="review" id="review" class="form-control" cols="30" rows="5" placeholder="您的评论"></textarea></p>
+                        <p class="form-submit"><input type="submit" class="btn btn-primary btn-lg" name="proceed" value="发表评论"></p>
                     </form>
                 </div>
 

@@ -18,6 +18,8 @@ public class Product {
     private String productDesc;
     private Date updateDate;
     private String status;
+    private String productName;
+    private String productIntroduction;
 
     public String getId() {
         return id;
@@ -144,5 +146,21 @@ public class Product {
         result = 31 * result + (updateDate != null ? updateDate.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductIntroduction() {
+        return productIntroduction;
+    }
+
+    public void setProductIntroduction(String productIntroduction) {
+        this.productIntroduction = productIntroduction;
     }
 }

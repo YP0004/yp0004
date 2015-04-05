@@ -4,8 +4,8 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.yfann.web.model.ProductKind" table="t_product_kind" schema="" catalog="yp0004">
+    <class name="com.yfann.web.model.ProductLevel" table="t_product_level" schema="" catalog="yp0004">
         <id name="id" column="id"/>
-        <property name="kindName" column="kind_name"/>
+        <property name="levelName" column="level_name"/>
     </class>
 </hibernate-mapping>

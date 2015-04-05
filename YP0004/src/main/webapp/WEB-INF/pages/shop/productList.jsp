@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -20,12 +21,12 @@
 
 <!-- Header -->
 
-    <header id="header">
-        <%@include file="../common/commonHeader.jsp"%>
+<header id="header">
+    <%@include file="../common/commonHeader.jsp" %>
 
-        <%@include file="../common/commonMenu.jsp"%>
+    <%@include file="../common/commonMenu.jsp" %>
 
-    </header>
+</header>
 
 <!-- ========== MENU END ========== -->
 
@@ -73,257 +74,37 @@
             <div class="col-sm-9">
 
                 <ul class="products row">
-
-                    <li class="col-sm-4 first">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="${pageContext.request.contextPath}/product/forwardProduct.action"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
+                    <c:forEach items="${productList}" var="product">
+                        <li class="col-sm-4">
+                            <div class="product">
+                                <div class="thumbnail">
+                                    <a href="${pageContext.request.contextPath}/product/forwardProduct.action?id=${product.productId}"><img
+                                            src="${pageContext.request.contextPath}/product/takeProductHeadImg.action?id=${product.productId}"
+                                            style="width: 263px;height: 388px; max-width: 263px;max-height: 388px;"
+                                            alt=""></a>
+                                    <a href="#" class="add-to-cart" title="添加到购物车">
                   <span class="fa-stack fa-2x">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
                   </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
+                                    </a>
+                                </div>
+                                <hr>
+                                <div class="title">
+                                    <h3><a href="#">${product.productName}</a></h3>
 
-                    <li class="col-sm-4">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="${pageContext.request.contextPath}/product/forwardProduct.action"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
+                                    <p>正在更新</p>
+                                </div>
+                                <span class="price">￥${product.productPrice}</span>
                             </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 last">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 first">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 last">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 last">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 last">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 last">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
-                    <li class="col-sm-4 last">
-                        <div class="product">
-                            <div class="thumbnail">
-                                <a href="product.html"><img src="http://placehold.it/263x388" alt=""></a>
-                                <a href="#" class="add-to-cart" title="添加到购物车">
-                  <span class="fa-stack fa-2x">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
-                  </span>
-                                </a>
-                            </div>
-                            <hr>
-                            <div class="title">
-                                <h3><a href="#">Reshape Panties</a></h3>
-                                <p>by Jack &amp; Jones</p>
-                            </div>
-                            <span class="price">$18</span>
-                        </div>
-                    </li>
-
+                        </li>
+                    </c:forEach>
                 </ul>
 
                 <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
+                    <li class="disabled"><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li class="disabled"><a href="#">&raquo;</a></li>
                 </ul>
 
             </div>
@@ -339,13 +120,13 @@
 
 <footer id="footer">
 
-    <%@ include file="../common/commonFooter.jsp"%>
+    <%@ include file="../common/commonFooter.jsp" %>
 
 </footer>
 
 <!-- ========== FOOTER END ========== -->
 
-<%@ include file="../common/commonCar.jsp"%>
+<%@ include file="../common/commonCar.jsp" %>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
