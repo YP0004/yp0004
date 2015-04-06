@@ -1,7 +1,10 @@
 package com.yfann.web.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Simon on 2015/4/2.
@@ -14,6 +17,26 @@ public class Order implements Serializable{
     private String orderStatus;
     private String payWay;
     private Date payTime;
+    private BigDecimal orderPrice;
+
+
+    private Set<OrderDetail> orderDetailSet;
+
+    public Set<OrderDetail> getOrderDetailSet() {
+        return orderDetailSet;
+    }
+
+    public void setOrderDetailSet(Set<OrderDetail> orderDetailSet) {
+        this.orderDetailSet = orderDetailSet;
+    }
+
+    public void setOrderCreateTime(java.sql.Date orderCreateTime) {
+        this.orderCreateTime = orderCreateTime;
+    }
+
+    public void setPayTime(Timestamp payTime) {
+        this.payTime = payTime;
+    }
 
     public String getId() {
         return id;
@@ -100,5 +123,13 @@ public class Order implements Serializable{
         result = 31 * result + (payWay != null ? payWay.hashCode() : 0);
         result = 31 * result + (payTime != null ? payTime.hashCode() : 0);
         return result;
+    }
+
+    public BigDecimal getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(BigDecimal orderPrice) {
+        this.orderPrice = orderPrice;
     }
 }

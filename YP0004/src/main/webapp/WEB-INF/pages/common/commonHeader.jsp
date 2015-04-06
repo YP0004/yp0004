@@ -65,8 +65,19 @@
                 </div>
                 <div class="collapse navbar-collapse top-nav">
                     <ul class="nav navbar-nav">
-                        <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">课程</a></li>
-                        <li><a href="${pageContext.request.contextPath}/system/forwardLogin.action">登录 / 注册</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.get('user') != null}">
+                                <li><a href="#">${sessionScope.get('user').userId}欢迎您回来</a></li>
+                                <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">个人空间</a></li>
+                                <li><a href="${pageContext.request.contextPath}/system/logout.action">退出登陆</a></li>
+
+                            </c:when>
+                            <c:when test="${sessionScope.get('user') == null}">
+                                <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">选购课程</a></li>
+                                <li><a href="${pageContext.request.contextPath}/system/forwardLogin.action">登录 / 注册</a></li>
+                            </c:when>
+
+                        </c:choose>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>

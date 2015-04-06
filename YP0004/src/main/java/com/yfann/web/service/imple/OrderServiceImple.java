@@ -1,10 +1,13 @@
 package com.yfann.web.service.imple;
 
+import com.yfann.web.dao.OrderDao;
+import com.yfann.web.model.Order;
 import com.yfann.web.model.Product;
 import com.yfann.web.service.OrderService;
 import com.yfann.web.utils.UUIDCreate;
 import com.yfann.web.vo.ShopCar;
 import com.yfann.web.vo.ShopCarItem;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,19 @@ import java.util.UUID;
  */
 @Service("orderService")
 public class OrderServiceImple implements OrderService {
+    @Autowired
+    private OrderDao orderDao;
+
+    /**
+     * 创建订单
+     *
+     * @param order
+     */
+    @Override
+    public void createOrder(Order order) {
+        orderDao.saveModel(order);
+    }
+
     /**
      * 将产品加入购物车
      *

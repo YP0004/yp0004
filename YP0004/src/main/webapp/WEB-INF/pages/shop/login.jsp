@@ -53,12 +53,12 @@
 
                 <h3>登陆</h3>
                 <div class="gap-20"></div>
-                <form role="form">
+                <form role="form" method="post" action="${pageContext.request.contextPath}/system/login.action">
                     <div class="form-group">
-                        <input type="email" class="form-control input-lg" id="exampleInputEmail" placeholder="Enter">
+                        <input type="text" class="form-control input-lg" id="exampleInputEmail" name="userId" placeholder="请输入用户名">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" id="exampleInputPassword" placeholder="Password">
+                        <input type="password" class="form-control input-lg" id="exampleInputPassword" name="password" placeholder="请输入密码">
                     </div>
                     <div class="checkbox pull-left">
                         <label>
@@ -85,7 +85,7 @@
                     <span class="text-primary">Step 3:</span> Erat consequat auctor euin!
                 </p>
 
-                <a href="#" class="btn btn-primary btn-lg">立即注册</a>
+                <a href="${pageContext.request.contextPath}/system/forwardRegist.action" class="btn btn-primary btn-lg">立即注册</a>
 
             </div>
         </div>

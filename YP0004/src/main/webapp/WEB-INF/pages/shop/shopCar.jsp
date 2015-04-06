@@ -51,7 +51,7 @@
             <h1 class="page-title">购物车</h1>
 
 
-
+<form action="${pageContext.request.contextPath}/order/forwardSureOrder.action" method="post">
             <table class="shop_table cart table-striped">
                 <thead>
                 <tr>
@@ -120,13 +120,14 @@
                 </tr>
                 </tbody>
             </table>
+</form>
 
             <div class="cart-collaterals">
                 <table class="totals">
                     <tbody>
                     <tr class="cart-subtotal">
                         <th>购物车小计:</th>
-                        <td><span class="amount">£12.00</span></td>
+                        <td><span class="amount">￥${sessionScope.get('shopCar').countPrice}</span></td>
                     </tr>
                     <tr class="shipping">
                         <th>是否折扣:</th>
@@ -134,7 +135,7 @@
                     </tr>
                     <tr class="order-total">
                         <th>订单总计:</th>
-                        <td><span class="amount">£12.00</span></td>
+                        <td><span class="amount">￥${sessionScope.get('shopCar').countPrice}</span></td>
                     </tr>
                     </tbody>
                 </table>

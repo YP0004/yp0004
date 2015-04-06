@@ -27,7 +27,7 @@
 
             <c:choose>
 
-                <c:when test="${sessionScope.get('shopCar') == null && sessionScope.get('shopCar').shopCarItems == null && sessionScope.get('shopCar').shopCarItems.size() <= 0}">
+                <c:when test="${sessionScope.get('shopCar') == null}">
                     <ul class="cart_list">
                         <li>
                             <span class="amount">暂无课程添加到购物车,请您选购</span>
@@ -47,7 +47,7 @@
                             </li>
                         </c:forEach>
                     </ul>
-                    <p class="total"><strong>小计:</strong> <span class="amount">${sessionScope.get('shopCar').countPrice}</span></p>
+                    <p class="total"><strong>小计:</strong> <span class="amount">￥${sessionScope.get('shopCar').countPrice}</span></p>
 
                     <p class="buttons">
                         <a class="btn btn-default btn-lg btn-block"
@@ -56,54 +56,6 @@
                     </p>
                 </c:when>
             </c:choose>
-
-
-<%--
-
-        <c:if test="${sessionScope.get('shopCarList') == null}">
-            <ul class="cart_list">
-                <li>
-                    <span class="amount">暂无课程添加到购物车,请您选购</span>
-                </li>
-            </ul>
-
-        </c:if>
-
-
-        <c:if test="${sessionScope.get('shopCarList') != null}">
-            <ul class="cart_list">
-                <li>
-                    <a href="http://coffeecreamthemes.com/themes/perfekta/wordpress/s/flying-ninja/">
-                        <img alt="" src="http://placehold.it/60x60">
-                        Reshape Panties
-                    </a>
-                    <span class="quantity">1 × <span class="amount">$12.00</span></span>
-                </li>
-                <li>
-                    <a href="http://coffeecreamthemes.com/themes/perfekta/wordpress/s/flying-ninja/">
-                        <img alt="" src="http://placehold.it/60x60">
-                        Reshape Panties
-                    </a>
-                    <span class="quantity">1 × <span class="amount">$12.00</span></span>
-                </li>
-                <li>
-                    <a href="http://coffeecreamthemes.com/themes/perfekta/wordpress/s/flying-ninja/">
-                        <img alt="" src="http://placehold.it/60x60">
-                        Reshape Panties
-                    </a>
-                    <span class="quantity">1 × <span class="amount">$12.00</span></span>
-                </li>
-            </ul>
-            <p class="total"><strong>小计:</strong> <span class="amount">$36.00</span></p>
-
-            <p class="buttons">
-                <a class="btn btn-default btn-lg btn-block"
-                   href="${pageContext.request.contextPath}/order/forwardShopCar.action">查看购物车</a>
-                <a class="btn btn-primary btn-lg btn-block" href="my-account.html">结算</a>
-            </p>
-
-        </c:if>
---%>
 
 
     </aside>

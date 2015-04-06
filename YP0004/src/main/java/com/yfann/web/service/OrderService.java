@@ -1,5 +1,6 @@
 package com.yfann.web.service;
 
+import com.yfann.web.model.Order;
 import com.yfann.web.model.Product;
 import com.yfann.web.vo.ShopCar;
 
@@ -13,4 +14,10 @@ public interface OrderService {
      * @param product
      */
     public void addBuyCar(ShopCar shopCar,Product product);
+
+    /**
+     * 创建订单
+     * @param order
+     */
+    public void createOrder(Order order);
 }

@@ -5,12 +5,18 @@
 <hibernate-mapping>
 
     <class name="com.yfann.web.model.Order" table="t_order" schema="" catalog="yp0004">
-        <id name="id" column="id"/>
-        <property name="orderId" column="order_id"/>
-        <property name="userId" column="user_id"/>
-        <property name="orderCreateTime" column="order_create_time"/>
-        <property name="orderStatus" column="order_status"/>
-        <property name="payWay" column="pay_way"/>
-        <property name="payTime" column="pay_time"/>
+        <id name="id" column="id" type="java.lang.String" length="42"/>
+        <property name="orderId" column="order_id" type="java.lang.String" length="42"/>
+        <property name="userId" column="user_id" type="java.lang.String" length="42"/>
+        <property name="orderCreateTime" column="order_create_time" type="java.util.Date"/>
+        <property name="orderStatus" column="order_status" type="java.lang.String" length="10"/>
+        <property name="payWay" column="pay_way" type="java.lang.String" length="10"/>
+        <property name="payTime" column="pay_time" type="java.util.Date"/>
+        <property name="orderPrice" column="order_price" type="java.math.BigDecimal"/>
+        
+        <set name="orderDetailSet" inverse="false" cascade="save-update">
+            <key column="order_id"></key>
+            <one-to-many class="com.yfann.web.model.OrderDetail"></one-to-many>
+        </set>
     </class>
 </hibernate-mapping>

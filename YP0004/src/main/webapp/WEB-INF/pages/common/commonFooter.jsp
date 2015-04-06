@@ -23,45 +23,36 @@
 
         <div class="col-sm-2">
             <aside class="widget widget_nav_menu">
-                <h3 class="widget-title">Garbini</h3>
+                <h3 class="widget-title">365IT学院</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Log In / Sign Up</a></li>
-                    <li><a href="#">Checkout</a></li>
-                    <li><a href="#">My Wishlist</a></li>
-                    <li><a href="#">My Cart</a></li>
-                    <li><a href="#">What’s New</a></li>
+                    <li><a href="#">主页</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">登陆 / 注册</a></li>
+                    <li><a href="#">退出登陆</a></li>
+                    <li><a href="#">我的空间</a></li>
+                    <li><a href="#">我的购物车</a></li>
                 </ul>
             </aside>
         </div>
 
         <div class="col-sm-2">
             <aside class="widget widget_nav_menu">
-                <h3 class="widget-title">Shop</h3>
+                <h3 class="widget-title">精品课程</h3>
                 <ul>
-                    <li><a href="#">Cloting</a></li>
-                    <li><a href="#">Feeding Bottles</a></li>
-                    <li><a href="#">Diaper</a></li>
-                    <li><a href="#">Infant Clothes</a></li>
-                    <li><a href="#">Educational Baby Toys</a></li>
-                    <li><a href="#">Strollers &amp; Pams</a></li>
-                    <li><a href="#">Creams &amp; Ointments</a></li>
+                    <li><a href="#">全部课程</a></li>
+                    <li><a href="#">正在更新</a></li>
+                    <li><a href="#">已完结课程</a></li>
                 </ul>
             </aside>
         </div>
 
         <div class="col-sm-2">
             <aside class="widget widget_nav_menu">
-                <h3 class="widget-title">Info</h3>
+                <h3 class="widget-title">公司信息</h3>
                 <ul>
-                    <li><a href="#">Company</a></li>
-                    <li><a href="#">Franchisee</a></li>
-                    <li><a href="#">Partners</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">公司主页</a></li>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">OA办公系统</a></li>
                 </ul>
             </aside>
         </div>
@@ -69,9 +60,9 @@
         <div class="col-sm-3">
 
             <aside class="widget widget_newsletter">
-                <h3 class="widget-title">Newsletter</h3>
+                <h3 class="widget-title">365IT学院动态</h3>
                 <form action="#" id="newsletter">
-                    <label for="newsletter-email">Get Our Newsletter</label>
+                    <label for="newsletter-email">订阅新动态</label>
                     <div class="input-group">
                         <input type="text" name="newsletter-email" id="newsletter-email" placeholder="Email" class="form-control input-lg">
               <span class="input-group-btn">
@@ -82,7 +73,7 @@
             </aside>
 
             <aside class="widget widget_social_profiles">
-                <h3 class="widget-title">Lets Get Connected</h3>
+                <h3 class="widget-title">获取连接</h3>
                 <ul class="social-profiles">
                     <li>
                         <a href="#" title="Facebook">
@@ -132,13 +123,13 @@
         <div class="col-sm-3">
 
             <aside class="widget widget_text">
-                <h3 class="widget-title">We Accept</h3>
+                <h3 class="widget-title">我们支持</h3>
                 <img src="${pageContext.request.contextPath}/shop/img/images/payments.png" alt="">
             </aside>
 
             <aside class="widget widget_text">
-                <h3 class="widget-title">Free Shipping</h3>
-                <p class="free-shipping"><i class="fa fa-plane fa-3x"></i> <span>On orders over $50</span></p>
+                <h3 class="widget-title">免费购物</h3>
+                <p class="free-shipping"><i class="fa fa-plane fa-3x"></i> <span>采取网盘下载模式,无国界限制,无运费</span></p>
             </aside>
 
         </div>
@@ -148,7 +139,8 @@
 </div>
 
 <div id="copyright">
-    <div class="container">&copy; Copyright Garbini 2014 | All Rights Reserved | Designed by <a href="http://themeforest.net/user/jthemes">jThemes</a></div>
+    <div class="container"> Copyright &copy; 2014-2015 上海颐凡软件科技有限公司
+        沪ICP备13043409号 <a href="http://themeforest.net/user/jthemes"></a></div>
 </div>
 
 </body>

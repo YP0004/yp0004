@@ -34,8 +34,10 @@ public class ShopCar {
      * @return
      */
     public BigDecimal getCountPrice() {
+        //避免刷新的时候价格一直累加
+        countPrice = new BigDecimal(0);
         for (ShopCarItem shopCarItem : shopCarItems){
-            countPrice.add(shopCarItem.getSubCount());
+            countPrice = countPrice.add(shopCarItem.getSubCount());
         }
         return countPrice;
     }

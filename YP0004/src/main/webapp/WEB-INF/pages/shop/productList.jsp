@@ -78,11 +78,11 @@
                         <li class="col-sm-4">
                             <div class="product">
                                 <div class="thumbnail">
-                                    <a href="${pageContext.request.contextPath}/product/forwardProduct.action?id=${product.productId}"><img
-                                            src="${pageContext.request.contextPath}/product/takeProductHeadImg.action?id=${product.productId}"
+                                    <a href="${pageContext.request.contextPath}/product/forwardProduct.action?id=${product.id}"><img
+                                            src="${pageContext.request.contextPath}/product/takeProductHeadImg.action?id=${product.id}"
                                             style="width: 263px;height: 388px; max-width: 263px;max-height: 388px;"
                                             alt=""></a>
-                                    <a href="#" class="add-to-cart" title="添加到购物车">
+                                    <a href="#" class="add-to-cart" title="添加到购物车" onclick="addBuyCar(${product.id});">
                   <span class="fa-stack fa-2x">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
@@ -136,6 +136,21 @@
 <script src="${pageContext.request.contextPath}/shop/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/shop/js/jquery.jpanelmenu.min.js"></script>
 <script src="${pageContext.request.contextPath}/shop/js/main.js"></script>
-
+<script type="text/javascript">
+    /**
+     * 添加到购物车
+     */
+    function addBuyCar(productId){
+        $.ajax({
+            type: "POST",
+            url: "${pageContext.request.contextPath}/order/addShopCar.action",
+            data: {id:productId},
+            success: function(data){
+                alert(data);
+                window.location.reload();
+            }
+        });
+    }
+</script>
 </body>
 </html>

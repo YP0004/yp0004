@@ -9,6 +9,7 @@ public class User implements Serializable {
     public String userId;
     public String password;
     public String rePassword;
+    public String email;
 
     public String getUserId() {
         return userId;
@@ -32,5 +33,13 @@ public class User implements Serializable {
 
     public void setRePassword(String rePassword) {
         this.rePassword = rePassword;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

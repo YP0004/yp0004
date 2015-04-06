@@ -5,26 +5,26 @@
 <hibernate-mapping>
 
     <class name="com.yfann.web.model.User" table="t_sys_user">
-        <id name="id" column="ID"/>
-        <property name="userId" column="USER_ID"/>
-        <property name="userName" column="USER_NAME"/>
-        <property name="departId" column="DEPART_ID"/>
-        <property name="password" column="PASSWORD"/>
-        <property name="birthday" column="BIRTHDAY"/>
-        <property name="sex" column="SEX"/>
-        <property name="idcardNumber" column="IDCARD_NUMBER"/>
-        <property name="education" column="EDUCATION"/>
-        <property name="foreignCountrie" column="FOREIGN_COUNTRIE"/>
-        <property name="graduateSchool" column="GRADUATE_SCHOOL"/>
-        <property name="phoneNumber" column="PHONE_NUMBER"/>
-        <property name="ip" column="IP"/>
-        <property name="countrie" column="COUNTRIE"/>
-        <property name="provinceAndCity" column="PROVINCE_AND_CITY"/>
-        <property name="address" column="ADDRESS"/>
-        <property name="zipCode" column="ZIP_CODE"/>
-        <property name="email" column="EMAIL"/>
-        <property name="qq" column="QQ"/>
-        <property name="headImg" column="HEAD_IMG"/>
-        <property name="status" column="STATUS"/>
+        <id name="id" column="ID" type="java.lang.String" length="42"/>
+        <property name="userId" column="USER_ID" type="java.lang.String" length="32"/>
+        <property name="userName" column="USER_NAME" type="java.lang.String" length="60"/>
+        <property name="departId" column="DEPART_ID" type="java.lang.String" length="60"/>
+        <property name="password" column="PASSWORD" type="java.lang.String" length="60"/>
+        <property name="birthday" column="BIRTHDAY" type="java.util.Date"/>
+        <property name="sex" column="SEX" type="java.lang.String" length="10"/>
+        <property name="idcardNumber" column="IDCARD_NUMBER" type="java.lang.String" length="30"/>
+        <property name="education" column="EDUCATION" type="java.lang.String" length="30"/>
+        <property name="foreignCountrie" column="FOREIGN_COUNTRIE" type="java.lang.String" length="30"/>
+        <property name="graduateSchool" column="GRADUATE_SCHOOL" type="java.lang.String" length="100"/>
+        <property name="phoneNumber" column="PHONE_NUMBER" type="java.lang.String" length="20"/>
+        <property name="ip" column="IP" type="java.lang.String" length="60"/>
+        <property name="countrie" column="COUNTRIE" type="java.lang.String" length="30"/>
+        <property name="provinceAndCity" column="PROVINCE_AND_CITY" type="java.lang.String" length="30"/>
+        <property name="address" column="ADDRESS" type="java.lang.String" length="60"/>
+        <property name="zipCode" column="ZIP_CODE" type="java.lang.String" length="10"/>
+        <property name="email" column="EMAIL" type="java.lang.String" length="60"/>
+        <property name="qq" column="QQ" type="java.lang.String" length="11"/>
+        <property name="headImg" column="HEAD_IMG" type="blob"/>
+        <property name="status" column="STATUS" type="java.lang.String" length="10"/>
     </class>
 </hibernate-mapping>

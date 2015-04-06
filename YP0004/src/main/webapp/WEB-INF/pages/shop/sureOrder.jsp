@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -85,13 +86,8 @@
 
                 <tr>
                     <td class="actions" colspan="6">
-                        <div class="coupon">
-                            <h3>订单信息</h3>
-                            <p class="hidden-xs">订单号</p>
-                            <p class="hidden-xs">下单日期</p>
-                        </div>
-                        <input type="submit" value="修改购物车" name="update_cart" class="btn btn-default btn-lg">
-                        <input type="submit" value="立即结算" name="proceed" class="btn btn-primary btn-lg">
+                        <a href="${pageContext.request.contextPath}/order/forwardShopCar.action"><input type="button" value="修改购物车" name="update_cart" class="btn btn-default btn-lg"></a>
+                        <a href="${pageContext.request.contextPath}/order/forwardPayOrder.action"><input type="submit" value="生成订单" name="proceed" class="btn btn-primary btn-lg"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -100,7 +96,7 @@
             <div class="cart-collaterals">
                 <table class="totals">
                     <tbody>
-                    <tr class="shipping">
+                    <tr class="order-total">
                         <th>是否折扣:</th>
                         <td>无折扣</td>
                     </tr>
