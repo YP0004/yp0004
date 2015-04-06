@@ -20,4 +20,18 @@ public interface OrderService {
      * @param order
      */
     public void createOrder(Order order);
+
+    /**
+     * 根据订单号查询订单
+     * @param orderId
+     * @return
+     */
+    public Order findOrderByOrderId(String orderId);
+
+    /**
+     * 根据逐渐查找订单
+     * @param id
+     * @return
+     */
+    public Order findOrderById(String id);
 }

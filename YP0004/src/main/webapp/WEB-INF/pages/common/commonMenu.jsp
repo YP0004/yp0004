@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index-2.html"><img src="${pageContext.request.contextPath}/shop/img/logo.jpg" widget="131px" height="110px" style="max-width: 131px;max-height: 110px;" alt="Garbini" class="img-responsive"></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/system/forwardIndex.action"><img src="${pageContext.request.contextPath}/shop/img/logo.jpg" widget="131px" height="110px" style="max-width: 131px;max-height: 110px;" alt="365IT学院" class="img-responsive"></a>
             </div>
             <div class="navbar-collapse collapse main-nav">
                 <ul class="nav navbar-nav navbar-right">
@@ -45,14 +45,14 @@
                     <li class="dropdown">
                         <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">课程分类 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="category.html">云计算系列</a></li>
-                            <li><a href="category.html">架构师系列</a></li>
-                            <li><a href="category.html">Web前端</a></li>
-                            <li><a href="category.html">企业级开发系列</a></li>
+                            <li><a href="#">云计算系列</a></li>
+                            <li><a href="#">架构师系列</a></li>
+                            <li><a href="#">Web前端</a></li>
+                            <li><a href="#">企业级开发系列</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">最热课程</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">最热课程</a>
                     </li>
                 </ul>
             </div>

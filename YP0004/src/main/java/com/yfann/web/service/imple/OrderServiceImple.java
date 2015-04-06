@@ -22,6 +22,28 @@ public class OrderServiceImple implements OrderService {
     private OrderDao orderDao;
 
     /**
+     * 根据逐渐查找订单
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Order findOrderById(String id) {
+        return (Order)orderDao.findModelById(id);
+    }
+
+    /**
+     * 根据订单号查询订单
+     *
+     * @param orderId
+     * @return
+     */
+    @Override
+    public Order findOrderByOrderId(String orderId) {
+        return orderDao.findOrderByOrderId(orderId);
+    }
+
+    /**
      * 创建订单
      *
      * @param order

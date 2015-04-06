@@ -25,12 +25,12 @@
             <aside class="widget widget_nav_menu">
                 <h3 class="widget-title">365IT学院</h3>
                 <ul>
-                    <li><a href="#">主页</a></li>
+                    <li><a href="${pageContext.request.contextPath}/system/forwardIndex.action">主页</a></li>
                     <li><a href="#">关于我们</a></li>
-                    <li><a href="#">登陆 / 注册</a></li>
-                    <li><a href="#">退出登陆</a></li>
+                    <li><a href="${pageContext.request.contextPath}/system/forwardLogin.action">登陆 / 注册</a></li>
+                    <li><a href="${pageContext.request.contextPath}/system/logout.action">退出登陆</a></li>
                     <li><a href="#">我的空间</a></li>
-                    <li><a href="#">我的购物车</a></li>
+                    <li><a href="${pageContext.request.contextPath}/order/forwardShopCar.action">我的购物车</a></li>
                 </ul>
             </aside>
         </div>
@@ -39,7 +39,7 @@
             <aside class="widget widget_nav_menu">
                 <h3 class="widget-title">精品课程</h3>
                 <ul>
-                    <li><a href="#">全部课程</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">全部课程</a></li>
                     <li><a href="#">正在更新</a></li>
                     <li><a href="#">已完结课程</a></li>
                 </ul>

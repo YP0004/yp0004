@@ -1,56 +1,83 @@
 package com.yfann.web.action;
 
+import com.yfann.web.model.MyProduct;
 import com.yfann.web.model.Order;
+import com.yfann.web.model.OrderDetail;
+import com.yfann.web.service.MyProductService;
+import com.yfann.web.service.OrderService;
+import com.yfann.web.utils.AlipayNotify;
+import com.yfann.web.utils.AlipaySubmit;
 import com.yfann.web.utils.ReadProperties;
+import com.yfann.web.utils.UUIDCreate;
 import com.yfann.web.vo.ApplicationValue;
+import com.yfann.web.vo.DicValue;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 /**
  * 支付宝支付模块
  */
 @Controller
-@RequestMapping("aplipay")
+@RequestMapping("alipay")
 public class AlipayAction {
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private MyProductService myProductService;
+
     @RequestMapping("forwardPay")
-    public void forwardPay(Order order,HttpServletRequest request) throws Exception{
+    public void forwardPay(Order order,HttpServletRequest request,HttpServletResponse response) throws Exception{
         //生成订单
-
-
-
-/*
-
-
         // 支付类型
         String payment_type = "1";
         // 必填，不能修改
         // 服务器异步通知页面路径
         // 需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
 
-        String notify_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/aplipay/notifyUrl" + ApplicationValue.APP_LAST_NAME;
+        String notify_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/alipay/notifyUrl" + ApplicationValue.APP_LAST_NAME;
 
         // 页面跳转同步通知页面路径
         // 需http://格式的完整路径，不能加?id=123这类自定义参数
-        String return_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/aplipay!returnUrl" + ApplicationValue.APP_LAST_NAME;
+        String return_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/alipay!returnUrl" + ApplicationValue.APP_LAST_NAME;
         // 卖家支付宝帐户
         String seller_email = ReadProperties.getValue("account","pay");
 
         // 必填 //商户订单号
-        String orderId = order.getOrderId();
+        String out_trade_no = order.getOrderId();
+        if (!StringUtils.isNotBlank(out_trade_no)){
+            throw new Exception("订单号为空,订单异常");
+        }
         // 商户网站订单系统中唯一订单号，必填 //订单名称
-        order = orderService.findOrderByOrderId(out_trade_no);
-        Product product = order.getOrderDetailList().get(0).getProduct();
-        String subject = product.getProductName();
+        String subject = "356IT学院IT精品架构师系列视频课程";
         // 必填 //付款金额
-        String total_fee = order.getCountPrice() + "";
+        String total_fee = null;
+        if (order != null && StringUtils.isNotBlank(order.getOrderId())){
+            Order orderResult = orderService.findOrderByOrderId(order.getOrderId());
+            if (orderResult != null && orderResult.getOrderPrice() != null){
+                total_fee = orderResult.getOrderPrice().toString();
+            }else {
+                throw new Exception("订单支付异常");
+            }
+
+        }else {
+            throw new Exception("订单支付异常");
+        }
+
         // 必填 //订单描述 String body = new
         // String(request.getParameter("WIDbody").getBytes("ISO-8859-1"),"UTF-8");
         // 商品展示地址
-        String show_url = getBasePath() + "/product!forwardProductDetail.html?product.id=" + product.getId();
+        String show_url = "";
         // 需以http://开头的完整路径，例如：http://www.商户网址.com/myorder.html //防钓鱼时间戳
-        String anti_phishing_key = getBasePath() + "/mycenter!myMessageCount";
+        String anti_phishing_key = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/system/forwardIndex" + ApplicationValue.APP_LAST_NAME;
         // 若要使用请调用类文件submit中的query_timestamp函数 //客户端的IP地址
         String exter_invoke_ip = request.getRemoteAddr();
         // 非局域网的外网IP地址，如：221.0.0.1
@@ -60,8 +87,10 @@ public class AlipayAction {
         // 把请求参数打包成数组
         Map<String, String> sParaTemp = new HashMap<String, String>();
         sParaTemp.put("service", "create_direct_pay_by_user");
-        sParaTemp.put("partner", AlipayConfig.partner);
-        sParaTemp.put("_input_charset", AlipayConfig.input_charset);
+        //合作者身份ID
+        sParaTemp.put("partner", ReadProperties.getValue("partner","pay"));
+        //字符编码 input_charset
+        sParaTemp.put("_input_charset", ReadProperties.getValue("input_charset","pay"));
         sParaTemp.put("payment_type", payment_type);
         sParaTemp.put("notify_url", notify_url);
         sParaTemp.put("return_url", return_url);
@@ -76,15 +105,15 @@ public class AlipayAction {
 
         // 建立请求
         String sHtmlText = AlipaySubmit.buildRequest(sParaTemp, "get", "确认");
-        out.println(sHtmlText);*/
+        response.getOutputStream().write(sHtmlText.getBytes("utf-8"));
 
     }
 
 
     /** 获取支付宝POST过来反馈信息 */
     @RequestMapping("/notifyUrl")
-    public void notifyUrl() {
-/*        Map<String, String> params = new HashMap<String, String>();
+    public void notifyUrl(HttpServletRequest request){
+        Map<String, String> params = new HashMap<String, String>();
         Map requestParams = request.getParameterMap();
         for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
             String name = (String) iter.next();
@@ -135,30 +164,38 @@ public class AlipayAction {
             // ——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
 
             if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
-                order = orderService.findOrderByOrderId(out_trade_no);
-                order.setOrderStatus("010");
-                List<OrderDetail> orderDetailList = order.getOrderDetailList();
-                for(OrderDetail od : orderDetailList){
-                    od.setSaleCode(UUIDCreate.getUUID());
-                    orderService.updateOrderDetail(od);
+                Order orderResult = orderService.findOrderByOrderId(out_trade_no);
+                //将订单设置为已支付
+                orderResult.setOrderStatus(DicValue.OrderStatus.ED_PAY);
+                //获取该订单课程详情
+                List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>(orderResult.getOrderDetailSet());
+                List<MyProduct> myProductList = new ArrayList<MyProduct>();
+                for (OrderDetail orderDetail : orderDetailList){
+                    for (int i = 0; i < orderDetail.getProductCount();i++){
+                        MyProduct myProduct = new MyProduct();
+                        myProduct.setId(UUIDCreate.takeUUID());
+                        myProduct.setProductId(orderDetail.getProductId());
+                        myProduct.setUserId(orderResult.getUserId());
+                        myProduct.setAuthorizeStatus(DicValue.ProductAuthorizeStatus.UN_AUTHORIZE);
+                        myProductList.add(myProduct);
+                    }
                 }
-                orderService.updateOrder(order);
+                myProductService.batchSaveMyProduct(myProductList);
             }
 
             // ——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
 
-            out.println("success"); // 请不要修改或删除
-
             // ////////////////////////////////////////////////////////////////////////////////////////
         } else {// 验证失败
-            out.println("fail");
-        }*/
+
+        }
     }
 
 
     /** 获取支付宝GET过来反馈信息 */
     @RequestMapping("/returnUrl")
-    public String returnUrl() {
+    public String returnUrl(HttpServletRequest request) {
+        notifyUrl(request);
 /*        Map<String, String> params = new HashMap<String, String>();
         Map requestParams = request.getParameterMap();
         for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {

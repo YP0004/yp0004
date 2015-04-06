@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Garbini</title>
+    <title>365IT学院</title>
 
     <!-- Bootstrap -->
     <link href="${pageContext.request.contextPath}/shop/css/bootstrap.min.css" rel="stylesheet">
@@ -94,7 +94,7 @@
 
             <tr>
                 <td class="actions" colspan="6">
-                    <input type="submit" value="立即支付" name="proceed" class="btn btn-primary btn-lg">
+                    <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${order.orderId}"><input type="button" value="立即支付" name="proceed" class="btn btn-primary btn-lg"/></a>
                 </td>
             </tr>
             </tbody>

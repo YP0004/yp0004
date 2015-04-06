@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Garbini</title>
+    <title>365IT学院</title>
 
     <!-- Bootstrap -->
     <link href="${pageContext.request.contextPath}/shop/css/bootstrap.min.css" rel="stylesheet">

@@ -13,4 +13,16 @@ public class DicValue {
         /*已支付**/
         public static final String ED_PAY = "1";
     }
+
+    /**
+     * 课程授权状态
+     */
+    public static class ProductAuthorizeStatus{
+        /*未授权**/
+        public static final String UN_AUTHORIZE = "0";
+        /*授权中**/
+        public static final String ING_AUTHORIZE = "1";
+        /*已授权**/
+        public static final String ED_AUTHORIZE = "2";
+    }
 }
