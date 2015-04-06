@@ -1,20 +1,16 @@
 package com.yfann.web.vo;
 
-import com.yfann.web.model.Product;
-
-import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * 购物车VO
+ * Created by Simon on 2015/4/4.
  */
-public class ShopCar implements Serializable {
+public class ShopCar {
     private String id;
-    private Product product;
-    private Integer count;
-
-    /*小计**/
-    private BigDecimal subCount;
+    private List<ShopCarItem> shopCarItems = new ArrayList<ShopCarItem>();
+    private BigDecimal countPrice = new BigDecimal(0);
 
 
     public String getId() {
@@ -25,31 +21,26 @@ public class ShopCar implements Serializable {
         this.id = id;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<ShopCarItem> getShopCarItems() {
+        return shopCarItems;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setShopCarItems(List<ShopCarItem> shopCarItems) {
+        this.shopCarItems = shopCarItems;
     }
 
     /**
-     * 小计
+     * 总价
      * @return
      */
-    public BigDecimal getSubCount() {
-        return product.getProductPrice().multiply(new BigDecimal(count));
+    public BigDecimal getCountPrice() {
+        for (ShopCarItem shopCarItem : shopCarItems){
+            countPrice.add(shopCarItem.getSubCount());
+        }
+        return countPrice;
     }
 
-    public void setSubCount(BigDecimal subCount) {
-        this.subCount = subCount;
+    public void setCountPrice(BigDecimal countPrice) {
+        this.countPrice = countPrice;
     }
 }

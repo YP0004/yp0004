@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -113,7 +114,7 @@
                     <button class="plus"><i class="fa fa-plus"></i></button>
                 </div>--%>
 
-                <input type="submit" class="btn btn-primary btn-lg" id="add-to-cart" value="添加到购物车">
+                <input type="button" class="btn btn-primary btn-lg" id="add-to-cart" value="添加到购物车" onclick="addBuyCar();">
 
             </div>
         </div>
@@ -325,5 +326,21 @@
 <script src="${pageContext.request.contextPath}/shop/js/jquery.jpanelmenu.min.js"></script>
 <script src="${pageContext.request.contextPath}/shop/js/main.js"></script>
 
+<script type="text/javascript">
+    /**
+     * 添加到购物车
+     */
+    function addBuyCar(){
+        $.ajax({
+            type: "POST",
+            url: "${pageContext.request.contextPath}/order/addShopCar.action",
+            data: {id:${product.id}},
+            success: function(data){
+                alert(data);
+                window.location.reload();
+            }
+        });
+    }
+</script>
 </body>
 </html>

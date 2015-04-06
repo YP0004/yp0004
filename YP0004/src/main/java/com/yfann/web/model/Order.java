@@ -1,19 +1,19 @@
 package com.yfann.web.model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Simon on 2015/4/2.
  */
-public class Order {
+public class Order implements Serializable{
     private String id;
     private String orderId;
     private String userId;
     private Date orderCreateTime;
     private String orderStatus;
     private String payWay;
-    private Timestamp payTime;
+    private Date payTime;
 
     public String getId() {
         return id;
@@ -63,11 +63,11 @@ public class Order {
         this.payWay = payWay;
     }
 
-    public Timestamp getPayTime() {
+    public Date getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(Timestamp payTime) {
+    public void setPayTime(Date payTime) {
         this.payTime = payTime;
     }
 
