@@ -50,6 +50,17 @@ public interface ProductService {
     public List<ProductKind> findAllProductKindList();
 
     /**
+     * 获取所有产品等级集合
+     * @return
+     */
+    public List<ProductLevel> findAllProductLevelList();
+    /**
+     * 获取所有产品分类集合
+     * @return
+     */
+    public List<ProductKind> findAllProductKindList();
+
+    /**
      * 根据产品id获取产品缩略图
      * @param productId
      * @return
