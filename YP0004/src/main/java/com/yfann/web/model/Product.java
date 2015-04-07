@@ -1,7 +1,8 @@
 package com.yfann.web.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Simon on 2015/4/2.
@@ -20,6 +21,27 @@ public class Product {
     private String status;
     private String productName;
     private String productIntroduction;
+
+    /*课程详情图片**/
+/*    private Set<ProducDetailImg> producDetailImgSet;
+    *//*课程精彩**//*
+    private Set<ProductGreateImg> productGreateImgSet;
+
+    public Set<ProducDetailImg> getProducDetailImgSet() {
+        return producDetailImgSet;
+    }
+
+    public void setProducDetailImgSet(Set<ProducDetailImg> producDetailImgSet) {
+        this.producDetailImgSet = producDetailImgSet;
+    }
+
+    public Set<ProductGreateImg> getProductGreateImgSet() {
+        return productGreateImgSet;
+    }
+
+    public void setProductGreateImgSet(Set<ProductGreateImg> productGreateImgSet) {
+        this.productGreateImgSet = productGreateImgSet;
+    }*/
 
     public String getId() {
         return id;

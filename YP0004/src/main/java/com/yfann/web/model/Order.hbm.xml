@@ -14,8 +14,8 @@
         <property name="payTime" column="pay_time" type="java.util.Date"/>
         <property name="orderPrice" column="order_price" type="java.math.BigDecimal"/>
         
-        <set name="orderDetailSet" inverse="false" cascade="save-update">
-            <key column="order_id"></key>
+        <set name="orderDetailSet" inverse="true" cascade="save-update">
+            <key><column name="order_id" ></column></key>
             <one-to-many class="com.yfann.web.model.OrderDetail"></one-to-many>
         </set>
     </class>

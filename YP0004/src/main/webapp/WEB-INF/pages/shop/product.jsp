@@ -123,8 +123,8 @@
         <ul class="nav nav-tabs product-tabs">
             <li class="active"><a href="#description" data-toggle="tab">描述</a></li>
             <li><a href="#reviews" data-toggle="tab">评论 (3)</a></li>
-            <li><a href="#reviews" data-toggle="tab">课程详情</a></li>
-            <li><a href="#reviews" data-toggle="tab">课程精彩截图</a></li>
+            <li><a href="#detailImg" data-toggle="tab">课程详情</a></li>
+            <li><a href="#greateImg" data-toggle="tab">课程精彩截图</a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -214,6 +214,32 @@
                 </div>
 
             </div>
+
+            <div class="tab-pane active" id="greateImg">
+                <ol class="commentlist">
+                    <c:forEach items="${productGreateImgIdList}" var="detailId">
+                    <li class="comment">
+                        <div class="comment_container">
+                            <p><img src="${pageContext.request.contextPath}/product/takeProductGreateImg.action?id=${detailId}" alt=""/></p>
+                        </div>
+                    </li>
+                    </c:forEach>
+                </ol>
+            </div>
+
+            <div class="tab-pane active" id="detailImg">
+                <ol class="commentlist">
+                    <c:forEach items="${productDetailImgIdList}" var="greatId">
+                        <li class="comment">
+                            <div class="comment_container">
+                                <p> <img src="${pageContext.request.contextPath}/product/takeProductDatailImg.action?id=${greatId}" alt=""/></p>
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ol>
+            </div>
+
+
         </div>
 
         <div class="related">

@@ -17,5 +17,15 @@
         <property name="status" column="status"/>
         <property name="productName" column="product_name"/>
         <property name="productIntroduction" column="product_introduction"/>
+
+<!--        <set name="producDetailImgSet" inverse="true" cascade="save-update">
+            <key><column name="product_id"></column></key>
+            <one-to-many class="com.yfann.web.model.ProducDetailImg"></one-to-many>
+        </set>
+
+        <set name="productGreateImgSet" inverse="true" cascade="save-update">
+            <key><column name="product_id"></column></key>
+            <one-to-many class="com.yfann.web.model.ProducDetailImg"></one-to-many>
+        </set>-->
     </class>
 </hibernate-mapping>
