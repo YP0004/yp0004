@@ -4,6 +4,8 @@ import com.yfann.web.dao.ProductDao;
 import com.yfann.web.dao.common.imple.BaseDaoImple;
 import com.yfann.web.model.Product;
 import com.yfann.web.model.ProductImage;
+import com.yfann.web.model.ProductKind;
+import com.yfann.web.model.ProductLevel;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,29 @@ import java.util.List;
  */
 @Repository("productDao")
 public class ProductDaoImple extends BaseDaoImple<Product> implements ProductDao<Product> {
+
+    /**
+     * 获取所有产品等级集合
+     *
+     * @return
+     */
+    @Override
+    public List<ProductLevel> findAllProductLevelList() {
+        String hql = "from " + ProductLevel.class.getName();
+        return hibernateTemplate.find(hql);
+    }
+
+    /**
+     * 获取所有产品分类集合
+     *
+     * @return
+     */
+    @Override
+    public List<ProductKind> findAllProductKindList() {
+        String hql = "from " + ProductKind.class.getName();
+        return hibernateTemplate.find(hql);
+    }
+
     /**
      * 根据产品id获取产品缩略图
      *

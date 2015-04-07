@@ -2,6 +2,8 @@ package com.yfann.web.service.imple;
 
 import com.yfann.web.dao.ProductDao;
 import com.yfann.web.model.Product;
+import com.yfann.web.model.ProductKind;
+import com.yfann.web.model.ProductLevel;
 import com.yfann.web.service.ProductService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,27 @@ import java.util.List;
 public class ProductServiceImple implements ProductService {
     @Autowired
     private ProductDao productDao;
+
+    /**
+     * 获取所有产品等级集合
+     *
+     * @return
+     */
+    @Override
+    public List<ProductLevel> findAllProductLevelList() {
+        return productDao.findAllProductLevelList();
+    }
+
+    /**
+     * 获取所有产品分类集合
+     *
+     * @return
+     */
+    @Override
+    public List<ProductKind> findAllProductKindList() {
+        return productDao.findAllProductKindList();
+    }
+
     /**
      * 根据产品id获取产品缩略图
      *
