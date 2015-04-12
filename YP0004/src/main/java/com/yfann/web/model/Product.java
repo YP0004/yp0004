@@ -23,7 +23,7 @@ public class Product {
     private String productIntroduction;
 
     /*课程详情图片**/
-/*    private Set<ProducDetailImg> producDetailImgSet;
+/*    private Set<ProductDetailImg> productDetailImgSet;
     *//*课程精彩**//*
     private Set<ProductGreateImg> productGreateImgSet;
 

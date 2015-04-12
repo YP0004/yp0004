@@ -66,7 +66,7 @@ public class OrderServiceImple implements OrderService {
             List<ShopCarItem> shopCarItems  = shopCar.getShopCarItems();
             for (ShopCarItem shopCarItem : shopCarItems) {
                 //如果购物车存在则数量加一
-                if (product.getId().equalsIgnoreCase(shopCarItem.getProduct().getProductId())){
+                if (product.getId().equalsIgnoreCase(shopCarItem.getProduct().getId())){
                     shopCarItem.setCount(1);
                     flag = false;
                     break;
