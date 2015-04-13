@@ -15,7 +15,7 @@
 		
 	
 		
-		<!--视图解析器 /WEB-INF/jsp/index.jsp -->
+		<!--视图解析器 /WEB-INF/jsp/myCenterIndex.jsp -->
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="prefix" value="/WEB-INF/pages/"></property>
 			<property name="suffix" value=".jsp"></property>

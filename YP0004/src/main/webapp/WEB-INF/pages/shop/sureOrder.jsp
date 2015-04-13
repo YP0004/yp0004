@@ -102,7 +102,7 @@
                     </tr>
                     <tr class="order-total">
                         <th>订单总计:</th>
-                        <td><span class="amount">￥66.00</span></td>
+                        <td><span class="amount">￥${sessionScope.get('shopCar').countPrice}</span></td>
                     </tr>
                     </tbody>
                 </table>

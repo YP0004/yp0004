@@ -1,11 +1,17 @@
 package com.yfann.web.action;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.yfann.web.model.User;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.utils.UUIDCreate;
 import com.yfann.web.vo.ApplicationValue;
+
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -91,8 +97,14 @@ public class SystemAction {
      * @return
      */
     @RequestMapping("/login")
-    public String login(User user, HttpServletRequest request) {
+    public String login(User user, HttpServletRequest request,Model model) {
+    	Map<String, String> erroeMessage = new HashMap<String, String>();
         User userInfo = systemService.login(user);
+        if(userInfo == null){
+        	erroeMessage.put("loginError", "用户名或密码不正确!");
+        	model.addAttribute("erroeMessage", erroeMessage);
+        	return "shop/login";
+        }
         request.getSession(true).setAttribute(ApplicationValue.SESSION_USER, userInfo);
         return "redirect:" + action_pri + "/forwardIndex" + ApplicationValue.APP_LAST_NAME;
     }

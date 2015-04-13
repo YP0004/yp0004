@@ -217,10 +217,10 @@
 
             <div class="tab-pane active" id="greateImg">
                 <ol class="commentlist">
-                    <c:forEach items="${productGreateImgIdList}" var="detailId">
+                    <c:forEach items="${productGreateImgIdList}" var="greatId">
                     <li class="comment">
                         <div class="comment_container">
-                            <p><img src="${pageContext.request.contextPath}/product/takeProductGreateImg.action?id=${detailId}" alt=""/></p>
+                            <p><img src="${pageContext.request.contextPath}/product/takeProductGreateImg.action?id=${greatId}" alt=""/></p>
                         </div>
                     </li>
                     </c:forEach>
@@ -229,10 +229,10 @@
 
             <div class="tab-pane active" id="detailImg">
                 <ol class="commentlist">
-                    <c:forEach items="${productDetailImgIdList}" var="greatId">
+                    <c:forEach items="${productDetailImgIdList}" var="detailId">
                         <li class="comment">
                             <div class="comment_container">
-                                <p> <img src="${pageContext.request.contextPath}/product/takeProductDatailImg.action?id=${greatId}" alt=""/></p>
+                                <p> <img src="${pageContext.request.contextPath}/product/takeProductDatailImg.action?id=${detailId}" alt=""/></p>
                             </div>
                         </li>
                     </c:forEach>

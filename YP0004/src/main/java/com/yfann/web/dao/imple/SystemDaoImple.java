@@ -25,7 +25,9 @@ public class SystemDaoImple extends BaseDaoImple<User> implements SystemDao<User
         if (user != null && StringUtils.isNotBlank(user.getUserId()) && StringUtils.isNotBlank(user.getPassword())){
             String hql = "from " + User.class.getName() + " where userId = ? and password = ?";
             List<User> userList = hibernateTemplate.find(hql, new Object[]{user.getUserId(), user.getPassword()});
-            return userList.get(0);
+            if(userList != null && userList.size() > 0){
+            	return userList.get(0);
+            }
         }
         return null;
     }

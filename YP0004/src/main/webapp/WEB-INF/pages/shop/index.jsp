@@ -57,7 +57,7 @@
 <section id="content">
     <div class="container">
 
-        <div class="row ad-banners">
+<%--         <div class="row ad-banners">
             <div class="col-sm-4">
                 <a href="#"><img src="${pageContext.request.contextPath}/shop/img/images/ad-1.png" alt=""></a>
             </div>
@@ -175,7 +175,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> --%>
 
         <h2 class="align-center unbranded">浏览我们的课程</h2>
         <div class="gap-25"></div>

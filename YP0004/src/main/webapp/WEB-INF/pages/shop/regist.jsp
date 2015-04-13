@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-sm-6">
 
-                <h3>登陆</h3>
+                <h3>注册</h3>
                 <div class="gap-20"></div>
                 <form role="form" action="${pageContext.request.contextPath}/system/regist.action">
                     <div class="form-group">
@@ -75,14 +75,14 @@
             </div>
             <div class="col-sm-6">
 
-                <h3>Create A Wish List</h3>
+                <h3>365IT学院</h3>
                 <div class="gap-15"></div>
-                <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris morbi accumsan ipsum velit.</p>
+                <p>365IT学院,高端架构师培训</p>
 
                 <p>
-                    <span class="text-primary">Step 1:</span> Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.<br>
-                    <span class="text-primary">Step 2:</span> Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio ed non  mauris vitae erat.<br>
-                    <span class="text-primary">Step 3:</span> Erat consequat auctor euin!
+                    <span class="text-primary">步骤 1:</span> 点击注册按钮,注册本学院账号和密码<br>
+                    <span class="text-primary">步骤 2:</span> 登录后,将您喜欢的课程加入购物车然后购买<br>
+                    <span class="text-primary">步骤 3:</span> 提交您的机器码申请授权,从此走上架构师之路
                 </p>
 
                 <a href="${pageContext.request.contextPath}/system/forwardLogin.action" class="btn btn-primary btn-lg">立即登陆</a>
