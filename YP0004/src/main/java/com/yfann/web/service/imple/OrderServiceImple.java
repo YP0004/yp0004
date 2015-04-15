@@ -7,6 +7,7 @@ import com.yfann.web.service.OrderService;
 import com.yfann.web.utils.UUIDCreate;
 import com.yfann.web.vo.ShopCar;
 import com.yfann.web.vo.ShopCarItem;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,20 @@ import java.util.UUID;
 public class OrderServiceImple implements OrderService {
     @Autowired
     private OrderDao orderDao;
+
+    /**
+     * 根据用户名查询所有订单
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Order> findOrderListByUserId(String userId) {
+        if (StringUtils.isNotBlank(userId)){
+            return orderDao.findOrderListByUserId(userId);
+        }
+        return null;
+    }
 
     /**
      * 根据逐渐查找订单
@@ -49,7 +64,7 @@ public class OrderServiceImple implements OrderService {
      * @param order
      */
     @Override
-    public void createOrder(Order order) {
+    public void saveOrder(Order order) {
         orderDao.saveModel(order);
     }
 

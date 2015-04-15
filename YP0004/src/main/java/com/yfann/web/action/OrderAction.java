@@ -66,13 +66,13 @@ public class OrderAction {
                 OrderDetail orderDetail = new OrderDetail();
                 orderDetail.setId(UUIDCreate.takeUUID());
                 orderDetail.setOrderId(order.getId());
-                orderDetail.setProductId(shopCarItem.getProduct().getId());
+                orderDetail.setProduct(shopCarItem.getProduct());
                 orderDetail.setPrice(shopCarItem.getSubCount());
                 orderDetail.setProductCount(shopCarItem.getCount());
                 orderDetailList.add(orderDetail);
             }
             order.setOrderDetailSet(new HashSet<OrderDetail>(orderDetailList));
-            orderService.createOrder(order);
+            orderService.saveOrder(order);
             //清空购物车
 //            request.getSession().setAttribute("shopCar", null);
             model.addAttribute("order", order);

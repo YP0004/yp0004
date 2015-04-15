@@ -7,12 +7,17 @@
     <class name="com.yfann.web.model.MyProduct" table="t_my_product" schema="" catalog="yp0004">
         <id name="id" column="id"/>
         <property name="userId" column="user_id"/>
-        <property name="productId" column="product_id"/>
         <property name="smartCode" column="smart_code"/>
         <property name="playerCode" column="player_code"/>
         <property name="authorizeStatus" column="authorize_status"/>
         <property name="aceptDate" column="acept_date"/>
         <property name="authorizeDate" column="authorize_date"/>
         <property name="authorizeUser" column="authorize_user"/>
+<!--        <property name="authorizeStatusDic" generated="always" formula="select * from t_dic where dic_type ='PRODUCT_AUTHORIZE_STATUS' and dic_code = authorizeStatus"></property>-->
+        <many-to-one name="product" column="product_id" class="com.yfann.web.model.Product" cascade="save-update"/>
+        <one-to-one name="authorizeStatusDic" property-ref="dicComponent" cascade="save-update" class="com.yfann.web.model.Dic" fetch="join" lazy="false">
+        <formula>'PRODUCT_AUTHORIZE_STATUS'</formula> <formula>authorize_status</formula>
+    </one-to-one>
+        <!--<one-to-one name="authorizeStatusDic" property-ref="dicCode" formula="authorize_status" outer-join="true"/>-->
     </class>
 </hibernate-mapping>

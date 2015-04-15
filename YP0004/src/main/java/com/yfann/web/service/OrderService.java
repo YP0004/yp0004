@@ -4,10 +4,19 @@ import com.yfann.web.model.Order;
 import com.yfann.web.model.Product;
 import com.yfann.web.vo.ShopCar;
 
+import java.util.List;
+
 /**
  * Created by Simon on 2015/4/2.
  */
 public interface OrderService {
+
+    /**
+     * 根据用户名查询所有订单
+     * @param userId
+     * @return
+     */
+    public List<Order> findOrderListByUserId(String userId);
     /**
      * 将产品加入购物车
      * @param shopCar
@@ -19,7 +28,7 @@ public interface OrderService {
      * 创建订单
      * @param order
      */
-    public void createOrder(Order order);
+    public void saveOrder(Order order);
 
     /**
      * 根据订单号查询订单

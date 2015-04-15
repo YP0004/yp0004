@@ -88,10 +88,10 @@
                                             
                                             <c:choose>
                                                 <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '0'}">
-                                                    <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${myOrder.orderId}"><button class="btn btn-sm btn-danger">立即支付</button></a>&nbsp;<a href="${pageContext.request.contextPath}/myCenter/forwardMyOrderDetail.action?id=${myOrder.id}"><button class="btn btn-sm btn-primary">订单详情</button>
+                                                    <a href="#"><button class="btn btn-sm btn-danger">立即支付</button></a>&nbsp;<a href="#"><button class="btn btn-sm btn-primary">订单详情</button>
                                                 </c:when>
                                                 <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '1'}">
-                                                <a href="${pageContext.request.contextPath}/myCenter/forwardMyOrderDetail.action?id=${myOrder.id}"><button class="btn btn-sm btn-primary">订单详情</button>
+                                                <a href="#"><button class="btn btn-sm btn-primary">订单详情</button>
                                                 </c:when>
                                             </c:choose>
                                             

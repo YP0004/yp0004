@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,7 +64,9 @@ public class ProductAction {
      */
     @RequestMapping("/takeProductHeadImg")
     public void takeProductHeadImg(Product product, HttpServletResponse response) throws Exception {
-        response.getOutputStream().write(productService.takeProductHeadImg(product.getId()));
+        if (product != null && StringUtils.isNotBlank(product.getId())) {
+            response.getOutputStream().write(productService.takeProductHeadImg(product.getId()));
+        }
     }
 
     /**

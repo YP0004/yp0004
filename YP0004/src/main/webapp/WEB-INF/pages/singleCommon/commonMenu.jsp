@@ -25,7 +25,7 @@
                 <i class="fa fa-dashboard"></i> <span>我的订单</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> 所有订单</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/myCenter/forwardMyAllOrderList.action"><i class="fa fa-circle-o"></i> 所有订单</a></li>
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> 待付款订单</a></li>
             </ul>
         </li>

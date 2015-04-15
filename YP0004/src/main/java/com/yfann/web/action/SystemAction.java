@@ -55,7 +55,7 @@ public class SystemAction {
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
         //清楚登陆信息
-        request.getSession().setAttribute(ApplicationValue.SESSION_USER,null);
+        request.getSession().removeAttribute(ApplicationValue.SESSION_USER);
         return "redirect:" + action_pri + "/forwardIndex" + ApplicationValue.APP_LAST_NAME;
     }
 

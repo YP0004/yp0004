@@ -46,64 +46,109 @@
         <section class="content-header">
             <h1>
                 我的订单
-                <small>全部订单</small>
+                <small>订单详情</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 我的中心</a></li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>我的中心</a></li>
                 <li><a href="#">我的订单</a></li>
-                <li class="active">全部订单</li>
+                <li class="active">订单详情</li>
             </ol>
         </section>
+
         <!-- Main content -->
-        <section class="content">
+        <section class="invoice">
+            <!-- title row -->
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="box box-primary">
-                        <div class="box-header">
-                            <h3 class="box-title">我的订单</h3>
-                        </div><!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover"  style="vertical-align: middle;text-align: center;">
-                                <tr>
-                                    <th style="text-align: center">订单编号</th>
-                                    <th style="text-align: center">商品名称</th>
-                                    <th style="text-align: center">下单日期</th>
-                                    <th style="text-align: center">订单总价</th>
-                                    <th style="text-align: center">订单状态</th>
-                                    <th style="text-align: center">操作</th>
-                                </tr>
-                                <c:forEach items="${myOrderList}" var="myOrder">
-                                    <tr>
-                                        <td  style="vertical-align: middle;text-align: center;">${myOrder.orderId}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">
-                                            <c:forEach items="${myOrder.orderDetailSet}" var="orderDetail">
-                                                <small>${orderDetail.product.productName}</small>
-                                                <br/>
-                                            </c:forEach>
-                                        </td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myOrder.orderCreateTime}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">￥${myOrder.orderPrice}</td>
-                                        <td  style="vertical-align: middle;text-align: center;"><span class="label label-success">${myOrder.orderStatusDic.dicCn}</span></td>
-                                        <td  style="vertical-align: middle;text-align: center;">
-                                            
-                                            <c:choose>
-                                                <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '0'}">
-                                                    <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${myOrder.orderId}"><button class="btn btn-sm btn-danger">立即支付</button></a>&nbsp;<a href="${pageContext.request.contextPath}/myCenter/forwardMyOrderDetail.action?id=${myOrder.id}"><button class="btn btn-sm btn-primary">订单详情</button>
-                                                </c:when>
-                                                <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '1'}">
-                                                <a href="${pageContext.request.contextPath}/myCenter/forwardMyOrderDetail.action?id=${myOrder.id}"><button class="btn btn-sm btn-primary">订单详情</button>
-                                                </c:when>
-                                            </c:choose>
-                                            
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-                        </div><!-- /.box-body -->
-                    </div><!-- /.box -->
+                    <h2 class="page-header">
+                        <i class="fa fa-globe"></i>订单详情
+                    </h2>
+                </div><!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>订单号:</strong><br>
+                        ${order.orderId}
+                    </address>
+                </div><!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>订单状态</strong><br>
+                        ${order.orderStatusDic.dicCn}
+                    </address>
+                </div><!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>下单时间</strong><br>
+                        ${order.orderCreateTime}
+                    </address>
+                </div><!-- /.col -->
+
+
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>订单金额</strong><br>
+                        ￥${order.orderPrice}
+                    </address>
+                </div><!-- /.col -->
+
+
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>支付方式</strong><br>
+                        在线支付
+                    </address>
+                </div><!-- /.col -->
+
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>支付时间</strong><br>
+                        ${order.payTime}
+                    </address>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>商品名称</th>
+                            <th>商品简介</th>
+                            <th>商品单价</th>
+                            <th>数量</th>
+                            <th>商品总价</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <c:forEach items="${order.orderDetailSet}" var="orderDetail">
+                            <tr>
+                                <td>${orderDetail.product.productName}</td>
+                                <td>${orderDetail.product.productIntroduction}</td>
+                                <td>￥${orderDetail.product.productPrice}</td>
+                                <td>${orderDetail.productCount}</td>
+                                <td>￥${orderDetail.price}</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+                <div class="col-xs-12">
+                        <c:if test="${order.orderStatusDic.dicComponent.dicCode == '0'}">
+                            <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${order.orderId}"><button class="btn btn-danger pull-right"><i class="fa fa-credit-card"></i>立即支付</button></a> &nbsp;
+                        </c:if>
+                    &nbsp;<button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i>返回</button>
                 </div>
             </div>
         </section><!-- /.content -->
+        <div class="clearfix"></div>
     </div><!-- /.content-wrapper -->
     <footer class="main-footer">
         <%@ include file="../singleCommon/commonFooter.jsp"%>
