@@ -8,6 +8,11 @@
 	<name>YP0004</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
+        <dependency>
+            <groupId>jaxen</groupId>
+            <artifactId>jaxen</artifactId>
+            <version>1.1-beta-6</version>
+        </dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>

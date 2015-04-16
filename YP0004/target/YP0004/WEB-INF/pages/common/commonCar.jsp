@@ -50,9 +50,21 @@
                     <p class="total"><strong>小计:</strong> <span class="amount">￥${sessionScope.get('shopCar').countPrice}</span></p>
 
                     <p class="buttons">
-                        <a class="btn btn-default btn-lg btn-block"
-                           href="${pageContext.request.contextPath}/order/forwardShopCar.action">查看购物车</a>
-                        <a class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/order/forwardSureOrder.action">结算</a>
+
+                        <c:choose>
+                            <c:when test="${sessionScope.get('user') != null}">
+                                <a class="btn btn-default btn-lg btn-block"
+                                   href="${pageContext.request.contextPath}/order/forwardShopCar.action">查看购物车</a>
+                                <a class="btn btn-primary btn-lg btn-block" href="${pageContext.request.contextPath}/order/forwardSureOrder.action">结算</a>
+                            </c:when>
+                            <c:otherwise>
+                                <ul class="cart_list">
+                                    <li>
+                                        <span class="amount">请您先<a href="${pageContext.request.contextPath}/system/forwardLogin.action">登录</a></span>
+                                    </li>
+                                </ul>
+                            </c:otherwise>
+                        </c:choose>
                     </p>
                 </c:when>
             </c:choose>

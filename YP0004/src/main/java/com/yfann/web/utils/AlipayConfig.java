@@ -31,36 +31,18 @@ import com.yfann.web.action.OrderAction;
 
 public class AlipayConfig {
 
-	public static String account;
+	public static String account = "itedu365@126.com";
 	/** 合作身份者ID */
-	public static String partner;
+	public static String partner = "2088511821472728";
 	/** 商户的私钥 */
-	public static String key;
+	public static String key = "28zm7vdvviml70js3i3b58s4k5md4ype";
 
 	/** 调试用，创建TXT日志文件夹路径 */
 	public static String log_path;
 
 	/** 字符编码格式 目前支持 gbk 或 utf-8 */
-	public static String input_charset;
+	public static String input_charset = "utf-8";
 
 	/** 签名方式 不需修改 */
-	public static String sign_type;
-
-	static {
-		String path = OrderAction.class.getResource("/").getPath() + "pay.properties";
-		Properties properties = new Properties();
-		try {
-			properties.load(new FileInputStream(new File(path)));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		account = properties.getProperty("account");
-		partner = properties.getProperty("partner");
-		key = properties.getProperty("key");
-		input_charset = properties.getProperty("input_charset");
-		sign_type = properties.getProperty("sign_type");
-		// log_path = properties.getProperty("log_path");
-	}
+	public static String sign_type = "MD5";
 }

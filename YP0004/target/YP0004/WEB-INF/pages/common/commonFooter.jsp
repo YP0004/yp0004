@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -28,9 +29,13 @@
                     <li><a href="${pageContext.request.contextPath}/system/forwardIndex.action">主页</a></li>
                     <li><a href="#">关于我们</a></li>
                     <li><a href="${pageContext.request.contextPath}/system/forwardLogin.action">登陆 / 注册</a></li>
-                    <li><a href="${pageContext.request.contextPath}/system/logout.action">退出登陆</a></li>
-                    <li><a href="#">我的空间</a></li>
-                    <li><a href="${pageContext.request.contextPath}/order/forwardShopCar.action">我的购物车</a></li>
+                    <c:if test="${sessionScope.get('user') != null}">
+                        <li><a href="${pageContext.request.contextPath}/system/logout.action">退出登陆</a></li>
+                        <li><a href="${pageContext.request.contextPath}/myCenter/forwardMyCenterIndex.action">我的空间</a></li>
+                    </c:if>
+                    <c:if test="${sessionScope.get('user') != null && sessionScope.get('shopCar').shopCarItems.size() > 0}">
+                        <li><a href="${pageContext.request.contextPath}/order/forwardShopCar.action">我的购物车</a></li>
+                    </c:if>
                 </ul>
             </aside>
         </div>
@@ -40,8 +45,8 @@
                 <h3 class="widget-title">精品课程</h3>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">全部课程</a></li>
-                    <li><a href="#">正在更新</a></li>
-                    <li><a href="#">已完结课程</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">正在更新</a></li>
+                    <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">已完结课程</a></li>
                 </ul>
             </aside>
         </div>

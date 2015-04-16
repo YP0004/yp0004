@@ -2,6 +2,7 @@ package com.yfann.web.dao;
 
 import com.yfann.web.dao.common.BaseDao;
 import com.yfann.web.model.MyProduct;
+import com.yfann.web.model.User;
 
 import java.util.List;
 
@@ -15,4 +16,18 @@ public interface MyProductDao<T> extends BaseDao<T>{
      * @param myProductList
      */
     public void batchSaveMyProduct(List<MyProduct> myProductList);
+
+    /**
+     * 根据用户获取未授权课程列表
+     * @param user
+     * @return
+     */
+    public List<MyProduct> findMyUnAuthProductList(User user);
+
+    /**
+     * 根据用户获取所有课程列表
+     * @param user
+     * @return
+     */
+    public List<MyProduct> findMyProductList(User user);
 }

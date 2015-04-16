@@ -79,7 +79,7 @@
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">更多订单信息 <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="${pageContext.request.contextPath}/myCenter/forwardMyUnPayOrderList.action" class="small-box-footer">更多订单信息 <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -149,25 +149,25 @@
                                 <table class="table no-margin">
                                     <thead>
                                     <tr>
-                                        <th>订单编号</th>
-                                        <th>订单价格</th>
-                                        <th>订单状态</th>
-                                        <th>下单时间</th>
-                                        <th>操作</th>
+                                        <th style="text-align: center;vertical-align: middle;">订单编号</th>
+                                        <th style="text-align: center;vertical-align: middle;">订单价格</th>
+                                        <th style="text-align: center;vertical-align: middle;">订单状态</th>
+                                        <th style="text-align: center;vertical-align: middle;">下单时间</th>
+                                        <th style="text-align: center;vertical-align: middle;">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <c:forEach items="${myUnPayOrderList}" var="myUnPayOrder">
                                         <tr>
-                                            <td><a href="pages/examples/invoice.html">${myUnPayOrder.orderId}</a></td>
-                                            <td>￥${myUnPayOrder.orderPrice}</td>
-                                            <td><span class="label label-success">${myUnPayOrder.orderStatus}</span>
+                                            <td style="text-align: center;vertical-align: middle;"><a href="${pageContext.request.contextPath}/myCenter/forwardMyOrderDetail.action?id=${myUnPayOrder.id}">${myUnPayOrder.orderId}</a></td>
+                                            <td style="text-align: center;vertical-align: middle;">￥${myUnPayOrder.orderPrice}</td>
+                                            <td style="text-align: center;vertical-align: middle;"><span class="label label-success">${myUnPayOrder.orderStatusDic.dicCn}</span>
                                             </td>
-                                            <td>
+                                            <td style="text-align: center;vertical-align: middle;">
                                                 <div class="sparkbar" data-color="#00a65a"
                                                      data-height="20">${myUnPayOrder.orderCreateTime}</div>
                                             </td>
-                                            <td>
+                                            <td style="text-align: center;vertical-align: middle;">
                                                 <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${myUnPayOrder.orderId}">
                                                     <button type="button" class="btn btn-info btn-sm">立即支付</button>
                                                 </a></td>
@@ -181,7 +181,7 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <!--    <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>-->
-                            <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">查看更多订单信息</a>
+                            <a href="${pageContext.request.contextPath}/myCenter/forwardMyUnPayOrderList.action" class="btn btn-sm btn-default btn-flat pull-right">查看更多订单信息</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -226,7 +226,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer text-center">
-                            <a href="javascript::;" class="uppercase">查看所有课程信息</a>
+                            <a href="${pageContext.request.contextPath}/myProduct/forwardMyProductList.action" class="uppercase">查看所有课程</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -251,7 +251,7 @@
                         <div class="box-body chat" id="chat-box">
                             <!-- chat item -->
                             <div class="item">
-                                <img src="dist/img/user4-128x128.jpg" alt="user image" class="online"/>
+                                <img src="${pageContext.request.contextPath}/single/dist/img/user4-128x128.jpg" alt="user image" class="online"/>
 
                                 <p class="message">
                                     <a href="#" class="name">
@@ -264,7 +264,7 @@
                             <!-- /.item -->
                             <!-- chat item -->
                             <div class="item">
-                                <img src="dist/img/user3-128x128.jpg" alt="user image" class="offline"/>
+                                <img src="${pageContext.request.contextPath}/single/dist/img/user3-128x128.jpg" alt="user image" class="offline"/>
 
                                 <p class="message">
                                     <a href="#" class="name">
@@ -277,7 +277,7 @@
                             <!-- /.item -->
                             <!-- chat item -->
                             <div class="item">
-                                <img src="dist/img/user2-160x160.jpg" alt="user image" class="offline"/>
+                                <img src="${pageContext.request.contextPath}/single/dist/img/user2-160x160.jpg" alt="user image" class="offline"/>
 
                                 <p class="message">
                                     <a href="#" class="name">

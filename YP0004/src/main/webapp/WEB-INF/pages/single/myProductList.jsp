@@ -45,13 +45,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                我的订单
-                <small>全部订单</small>
+                我的课程
+                <small>所有课程</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 我的中心</a></li>
-                <li><a href="#">我的订单</a></li>
-                <li class="active">全部订单</li>
+                <li><a href="#">所有课程</a></li>
+                <li class="active">全部课程</li>
             </ol>
         </section>
         <!-- Main content -->
@@ -65,36 +65,24 @@
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover"  style="vertical-align: middle;text-align: center;">
                                 <tr>
-                                    <th style="text-align: center">订单编号</th>
-                                    <th style="text-align: center">商品名称</th>
-                                    <th style="text-align: center">下单日期</th>
-                                    <th style="text-align: center">订单总价</th>
-                                    <th style="text-align: center">订单状态</th>
+                                    <th style="text-align: center">课程名称</th>
+                                    <th style="text-align: center">授权状态</th>
+                                    <th style="text-align: center">申请日期</th>
+                                    <th style="text-align: center">授权日期</th>
+                                    <th style="text-align: center">授权人</th>
                                     <th style="text-align: center">操作</th>
                                 </tr>
-                                <c:forEach items="${myOrderList}" var="myOrder">
+                                <c:forEach items="${myProductList}" var="myProduct">
                                     <tr>
-                                        <td  style="vertical-align: middle;text-align: center;">${myOrder.orderId}</td>
+                                        <td  style="vertical-align: middle;text-align: center;">${myProduct.product.productName}</td>
                                         <td  style="vertical-align: middle;text-align: center;">
-                                            <c:forEach items="${myOrder.orderDetailSet}" var="orderDetail">
-                                                <small>${orderDetail.product.productName}</small>
-                                                <br/>
-                                            </c:forEach>
+                                            <span class="label label-success">${myProduct.authorizeStatusDic.dicCn}</span>
                                         </td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myOrder.orderCreateTime}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">￥${myOrder.orderPrice}</td>
-                                        <td  style="vertical-align: middle;text-align: center;"><span class="label label-success">${myOrder.orderStatusDic.dicCn}</span></td>
+                                        <td  style="vertical-align: middle;text-align: center;">${myProduct.aceptDate}</td>
+                                        <td  style="vertical-align: middle;text-align: center;">${myProduct.authorizeDate}</td>
+                                        <td  style="vertical-align: middle;text-align: center;"></td>
                                         <td  style="vertical-align: middle;text-align: center;">
-                                            
-                                            <c:choose>
-                                                <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '0'}">
-                                                    <a href="#"><button class="btn btn-sm btn-danger">立即支付</button></a>&nbsp;<a href="#"><button class="btn btn-sm btn-primary">订单详情</button>
-                                                </c:when>
-                                                <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '1'}">
-                                                <a href="#"><button class="btn btn-sm btn-primary">订单详情</button>
-                                                </c:when>
-                                            </c:choose>
-                                            
+                                            <a href="#"><button class="btn btn-sm btn-danger">申请授权</button></a>&nbsp;<a href="${pageContext.request.contextPath}/myProduct/forwardMyProductDetail.action?id=${myProduct.id}"><button class="btn btn-sm btn-primary">我的课程详情</button></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -28,7 +28,7 @@
             <nav id="language-selector">
                 <ul class="nav nav-pills">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">中文站</a>
+                        <a href="#"><%--中文站--%>365IT学院欢迎您</a>
                     </li>
                 </ul>
             </nav>

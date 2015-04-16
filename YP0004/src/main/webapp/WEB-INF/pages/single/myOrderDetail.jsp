@@ -144,7 +144,7 @@
                         <c:if test="${order.orderStatusDic.dicComponent.dicCode == '0'}">
                             <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${order.orderId}"><button class="btn btn-danger pull-right"><i class="fa fa-credit-card"></i>立即支付</button></a> &nbsp;
                         </c:if>
-                    &nbsp;<button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i>返回</button>
+                    &nbsp;<button class="btn btn-success pull-right" onclick="history.go(-1)">返回</button>
                 </div>
             </div>
         </section><!-- /.content -->

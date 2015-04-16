@@ -45,50 +45,109 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                我的课程
-                <small>未授权课程</small>
+                我的信息
+                <small>信息设置</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 我的中心</a></li>
-                <li><a href="#">我的课程</a></li>
-                <li class="active">未授权课程</li>
+                <li><a href="#">个人信息设置</a></li>
+                <li class="active">基本信息</li>
             </ol>
         </section>
         <!-- Main content -->
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
+                    <form role="form" action="${pageContext.request.contextPath}/myCenter/settingMyInfo.action" method="post">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h3 class="box-title">未授权课程</h3>
+                            <h3 class="box-title">基本信息设置</h3>
                         </div><!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover"  style="vertical-align: middle;text-align: center;">
-                                <tr>
-                                    <th style="text-align: center">课程名称</th>
-                                    <th style="text-align: center">授权状态</th>
-                                    <th style="text-align: center">申请日期</th>
-                                    <th style="text-align: center">授权日期</th>
-                                    <th style="text-align: center">授权人</th>
-                                    <th style="text-align: center">操作</th>
-                                </tr>
-                                <c:forEach items="${myUnAuthProductList}" var="myUnAuthProduct">
-                                    <tr>
-                                        <td  style="vertical-align: middle;text-align: center;">${myUnAuthProduct.product.productName}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">
-                                            <span class="label label-success">${myUnAuthProduct.authorizeStatusDic.dicCn}</span>
-                                        </td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myUnAuthProduct.aceptDate}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myUnAuthProduct.authorizeDate}</td>
-                                        <td  style="vertical-align: middle;text-align: center;"></td>
-                                        <td  style="vertical-align: middle;text-align: center;">
-                                                <a href="#"><button class="btn btn-sm btn-danger">申请授权</button></a>&nbsp;<a href="${pageContext.request.contextPath}/myProduct/forwardMyProductDetail.action?id=${myUnAuthProduct.id}"><button class="btn btn-sm btn-primary">我的课程详情</button></a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-                        </div><!-- /.box-body -->
+                        <!-- form start -->
+                            <div class="box-body">
+                                <div class="row">
+                                <div class="col-xs-12 col-md-3">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的姓名" value="${userModel.userName}" name="userName"/>
+                                </div>
+                                <div class="col-xs-12 col-md-3">
+                                    <label>生日</label>
+                                    <input type="date" class="form-control" placeholder="请输入您的生日" value="${userModel.birthday}" name="birthday"/>
+                                </div>
+                                <div class="col-xs-12 col-md-3">
+                                    <label for="exampleInputPassword1">性别</label>
+                                    <br/>
+                                    <select class="col-xs-12">
+                                        <option>男</option>
+                                        <option>女</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-12 col-md-3">
+                                    <label>身份证号</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的身份证号" value="${userModel.idcardNumber}" name="idcardNumber"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>学历</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的学历" value="${userModel.education}" name="education"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>留学国家</label>
+                                    <input type="text" class="form-control" placeholder="请输入留学国家" value="${userModel.foreignCountrie}" name="foreignCountrie"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>毕业学校</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的毕业学校" value="${userModel.graduateSchool}" name="graduateSchool"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>手机号</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的手机号" value="${userModel.phoneNumber}" name="phoneNumber"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>国家</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入您的国家" value="${userModel.countrie}" name="countrie">
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>省市</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的省市" value="${userModel.provinceAndCity}" name="provinceAndCity"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>地址</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的地址" value="${userModel.address}" name="address"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>邮编</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的邮编" value="${userModel.zipCode}" name="zipCode"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>邮箱</label>
+                                    <input type="email" class="form-control" placeholder="请输入您的邮箱" value="${userModel.email}" name="email"/>
+                                </div>
+
+                                <div class="col-xs-12 col-md-3">
+                                    <label>QQ</label>
+                                    <input type="text" class="form-control" placeholder="请输入您的QQ" value="${userModel.qq}" name="qq"/>
+                                </div>
+                            </div><!-- /.box-body -->
+                            </div>
+
+                            <div class="box-footer">
+                                <input type="hidden" name="id" value="${userModel.id}"/>
+                                <input type="hidden" name="userId" value="${userModel.userId}"/>
+                                <input type="hidden" name="password" value="${userModel.password}"/>
+                                <input type="hidden" name="departId" value="${userModel.departId}"/>
+                                <button type="submit" class="btn btn-primary">保存信息</button>
+                            </div>
                     </div><!-- /.box -->
+                    </form>
                 </div>
             </div>
         </section><!-- /.content -->

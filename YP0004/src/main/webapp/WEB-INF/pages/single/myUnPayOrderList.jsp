@@ -46,12 +46,12 @@
         <section class="content-header">
             <h1>
                 我的订单
-                <small>全部订单</small>
+                <small>未支付订单</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> 我的中心</a></li>
                 <li><a href="#">我的订单</a></li>
-                <li class="active">全部订单</li>
+                <li class="active">未支付订单</li>
             </ol>
         </section>
         <!-- Main content -->
@@ -60,7 +60,7 @@
                 <div class="col-xs-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h3 class="box-title">我的订单</h3>
+                            <h3 class="box-title">未支付订单</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover"  style="vertical-align: middle;text-align: center;">
@@ -72,29 +72,22 @@
                                     <th style="text-align: center">订单状态</th>
                                     <th style="text-align: center">操作</th>
                                 </tr>
-                                <c:forEach items="${myOrderList}" var="myOrder">
+                                <c:forEach items="${myUnPayOrderList}" var="myUnPayOrder">
                                     <tr>
-                                        <td  style="vertical-align: middle;text-align: center;">${myOrder.orderId}</td>
+                                        <td  style="vertical-align: middle;text-align: center;">${myUnPayOrder.orderId}</td>
                                         <td  style="vertical-align: middle;text-align: center;">
-                                            <c:forEach items="${myOrder.orderDetailSet}" var="orderDetail">
+                                            <c:forEach items="${myUnPayOrder.orderDetailSet}" var="orderDetail">
                                                 <small>${orderDetail.product.productName}</small>
                                                 <br/>
                                             </c:forEach>
                                         </td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myOrder.orderCreateTime}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">￥${myOrder.orderPrice}</td>
-                                        <td  style="vertical-align: middle;text-align: center;"><span class="label label-success">${myOrder.orderStatusDic.dicCn}</span></td>
+                                        <td  style="vertical-align: middle;text-align: center;">${myUnPayOrder.orderCreateTime}</td>
+                                        <td  style="vertical-align: middle;text-align: center;">￥${myUnPayOrder.orderPrice}</td>
+                                        <td  style="vertical-align: middle;text-align: center;"><span class="label label-success">${myUnPayOrder.orderStatusDic.dicCn}</span></td>
                                         <td  style="vertical-align: middle;text-align: center;">
-                                            
-                                            <c:choose>
-                                                <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '0'}">
-                                                    <a href="#"><button class="btn btn-sm btn-danger">立即支付</button></a>&nbsp;<a href="#"><button class="btn btn-sm btn-primary">订单详情</button>
-                                                </c:when>
-                                                <c:when test="${myOrder.orderStatusDic.dicComponent.dicCode == '1'}">
-                                                <a href="#"><button class="btn btn-sm btn-primary">订单详情</button>
-                                                </c:when>
-                                            </c:choose>
-                                            
+
+                                            <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${myUnPayOrder.orderId}"><button class="btn btn-sm btn-danger">立即支付</button></a>&nbsp;<a href="${pageContext.request.contextPath}/myCenter/forwardMyOrderDetail.action?id=${myUnPayOrder.id}"><button class="btn btn-sm btn-primary">订单详情</button></a>
+
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -17,6 +17,22 @@
 
     <link href="${pageContext.request.contextPath}/shop/css/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/shop/css/config.css" rel="stylesheet">
+    <script type="text/javascript">
+        /**
+         * 添加到购物车
+         */
+        function addBuyCar(id){
+            $.ajax({
+                type: "POST",
+                url: "${pageContext.request.contextPath}/order/addShopCar.action",
+                data: id,
+                success: function(data){
+                    alert(data);
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 
@@ -87,34 +103,7 @@
 
                 <h3>点击购买我!</h3>
 
-<%--                <div class="variations">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <select class="form-control col-sm-6" name="color" id="color">
-                                <option value="0">Color</option>
-                                <option value="red">Red</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6">
-                            <select class="form-control col-sm-6" name="size" id="size">
-                                <option value="0">Size</option>
-                                <option value="red">M</option>
-                                <option value="blue">L</option>
-                                <option value="green">XL</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>--%>
-
-<%--                <div class="quantity buttons_added">
-                    <button class="minus"><i class="fa fa-minus"></i></button>
-                    <input type="number" size="4" class="qty text form-control" title="Qty" value="1" name="qty" step="1">
-                    <button class="plus"><i class="fa fa-plus"></i></button>
-                </div>--%>
-
-                <input type="button" class="btn btn-primary btn-lg" id="add-to-cart" value="添加到购物车" onclick="addBuyCar();">
+                <input type="button" class="btn btn-primary btn-lg" id="add-to-cart" value="添加到购物车" onclick="addBuyCar('${product.id}');">
 
             </div>
         </div>
@@ -195,22 +184,32 @@
 
                 <div id="review_form">
                     <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
-                    <form action="#" id="commentform" class="comment-form">
-                        <div class="row">
-                            <p class="comment-form-rating col-sm-4">
-                                <select class="form-control">
-                                    <option value="0">Your Rating</option>
-                                    <option value="0">Perfect &mdash; 5*</option>
-                                    <option value="0">Good &mdash; 4*</option>
-                                    <option value="0">Average &mdash; 3*</option>
-                                    <option value="0">Not That Bad &mdash; 2*</option>
-                                    <option value="0">Very Poor &mdash; 1*</option>
-                                </select>
-                            </p>
-                        </div>
-                        <p class="comment-form-comment"><textarea name="review" id="review" class="form-control" cols="30" rows="5" placeholder="您的评论"></textarea></p>
-                        <p class="form-submit"><input type="submit" class="btn btn-primary btn-lg" name="proceed" value="发表评论"></p>
-                    </form>
+                    
+                    
+                    <c:choose>
+                        <c:when test="${sessionScope.get('user') != null}">
+                            <form action="#" id="commentform" class="comment-form">
+                                <div class="row">
+                                    <p class="comment-form-rating col-sm-4">
+                                        <select class="form-control">
+                                            <option value="0">非常好</option>
+                                            <option value="0">一般</option>
+                                            <option value="0">非常差</option>
+                                        </select>
+                                    </p>
+                                </div>
+
+                                <p class="comment-form-comment"><textarea name="review" id="review" class="form-control" cols="30" rows="5" placeholder="您的评论"></textarea></p>
+                                <p class="form-submit"><input type="button" class="btn btn-primary btn-lg" name="proceed" value="发表评论"></p>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            请您先<a href="${pageContext.request.contextPath}/system/forwardLogin.action">登录</a>
+                        </c:otherwise>
+                        
+                    </c:choose>
+                    
+
                 </div>
 
             </div>
@@ -351,22 +350,5 @@
 <script src="${pageContext.request.contextPath}/shop/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/shop/js/jquery.jpanelmenu.min.js"></script>
 <script src="${pageContext.request.contextPath}/shop/js/main.js"></script>
-
-<script type="text/javascript">
-    /**
-     * 添加到购物车
-     */
-    function addBuyCar(){
-        $.ajax({
-            type: "POST",
-            url: "${pageContext.request.contextPath}/order/addShopCar.action",
-            data: {id:${product.id}},
-            success: function(data){
-                alert(data);
-                window.location.reload();
-            }
-        });
-    }
-</script>
 </body>
 </html>

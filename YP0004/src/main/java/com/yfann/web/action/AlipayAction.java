@@ -5,10 +5,7 @@ import com.yfann.web.model.Order;
 import com.yfann.web.model.OrderDetail;
 import com.yfann.web.service.MyProductService;
 import com.yfann.web.service.OrderService;
-import com.yfann.web.utils.AlipayNotify;
-import com.yfann.web.utils.AlipaySubmit;
-import com.yfann.web.utils.ReadProperties;
-import com.yfann.web.utils.UUIDCreate;
+import com.yfann.web.utils.*;
 import com.yfann.web.vo.ApplicationValue;
 import com.yfann.web.vo.DicValue;
 import org.apache.commons.lang.StringUtils;
@@ -49,15 +46,15 @@ public class AlipayAction {
         // 需http://格式的完整路径，不能加?id=123这类自定义参数
         String return_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/alipay!returnUrl" + ApplicationValue.APP_LAST_NAME;
         // 卖家支付宝帐户
-        String seller_email = ReadProperties.getValue("account","pay");
+        String seller_email = new String("itedu365@126.com".getBytes(),"utf-8");
 
         // 必填 //商户订单号
-        String out_trade_no = order.getOrderId();
+        String out_trade_no = new String(order.getOrderId().getBytes(),"utf-8");
         if (!StringUtils.isNotBlank(out_trade_no)){
             throw new Exception("订单号为空,订单异常");
         }
-        // 商户网站订单系统中唯一订单号，必填 //订单名称
-        String subject = "356IT学院IT精品架构师系列视频课程";
+         //订单名称
+        String subject = new String("356IT学院IT精品架构师系列视频课程".getBytes(),"utf-8");
         // 必填 //付款金额
         String total_fee = null;
         if (order != null && StringUtils.isNotBlank(order.getOrderId())){
@@ -72,25 +69,26 @@ public class AlipayAction {
             throw new Exception("订单支付异常");
         }
 
-        // 必填 //订单描述 String body = new
-        // String(request.getParameter("WIDbody").getBytes("ISO-8859-1"),"UTF-8");
+        // 必填 //订单描述
+        String body = new String("356IT学院IT精品架构师系列视频课程".getBytes(),"utf-8");
+        //默认支付方式
+        String paymethod = new String("bankPay".getBytes(),"utf-8");
+        //默认网银
+        String defaultbank = new String("CMB".getBytes(),"utf-8");
         // 商品展示地址
-        String show_url = "";
-        // 需以http://开头的完整路径，例如：http://www.商户网址.com/myorder.html //防钓鱼时间戳
-        String anti_phishing_key = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/system/forwardIndex" + ApplicationValue.APP_LAST_NAME;
-        // 若要使用请调用类文件submit中的query_timestamp函数 //客户端的IP地址
-        String exter_invoke_ip = request.getRemoteAddr();
+        String show_url = new String("xxxx".getBytes(),"utf-8");
+        //防钓鱼时间戳
+        String anti_phishing_key = new String(AlipaySubmit.query_timestamp().getBytes(),"utf-8");
+        //客户端的IP地址
+        String exter_invoke_ip = new String(request.getRemoteAddr().getBytes(),"utf-8");
         // 非局域网的外网IP地址，如：221.0.0.1
 
         // ////////////////////////////////////////////////////////////////////////////////
-
-        // 把请求参数打包成数组
+        //把请求参数打包成数组
         Map<String, String> sParaTemp = new HashMap<String, String>();
         sParaTemp.put("service", "create_direct_pay_by_user");
-        //合作者身份ID
-        sParaTemp.put("partner", ReadProperties.getValue("partner","pay"));
-        //字符编码 input_charset
-        sParaTemp.put("_input_charset", ReadProperties.getValue("input_charset","pay"));
+        sParaTemp.put("partner", AlipayConfig.partner);
+        sParaTemp.put("_input_charset", AlipayConfig.input_charset);
         sParaTemp.put("payment_type", payment_type);
         sParaTemp.put("notify_url", notify_url);
         sParaTemp.put("return_url", return_url);
@@ -98,13 +96,16 @@ public class AlipayAction {
         sParaTemp.put("out_trade_no", out_trade_no);
         sParaTemp.put("subject", subject);
         sParaTemp.put("total_fee", total_fee);
-        // sParaTemp.put("body", body);
+        sParaTemp.put("body", body);
+        sParaTemp.put("paymethod", paymethod);
+        sParaTemp.put("defaultbank", defaultbank);
         sParaTemp.put("show_url", show_url);
         sParaTemp.put("anti_phishing_key", anti_phishing_key);
         sParaTemp.put("exter_invoke_ip", exter_invoke_ip);
 
         // 建立请求
-        String sHtmlText = AlipaySubmit.buildRequest(sParaTemp, "get", "确认");
+        String sHtmlText = AlipaySubmit.buildRequest(sParaTemp, "post", "确认");
+        response.setCharacterEncoding("utf-8");
         response.getOutputStream().write(sHtmlText.getBytes("utf-8"));
 
     }
@@ -262,7 +263,7 @@ public class AlipayAction {
             // 该页面可做页面美工编辑
             return "forwardfail";
         }
-        return "forwardMyOrderList";*/
+        return "forwardmyUnPayOrderList";*/
         return null;
     }
 }

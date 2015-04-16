@@ -15,6 +15,22 @@ import java.util.List;
 public class SystemDaoImple extends BaseDaoImple<User> implements SystemDao<User> {
 
     /**
+     * 根据userId查询用户
+     *
+     * @param userId
+     * @return
+     */
+    @Override
+    public User findUserByUserId(String userId) {
+        String hql = "from " + User.class.getName() + " where userId = ?";
+        List<User> userList = hibernateTemplate.find(hql,new Object[]{userId});
+        if (userList != null && userList.size() > 0){
+            return userList.get(0);
+        }
+        return null;
+    }
+
+    /**
      * 登陆
      *
      * @param user

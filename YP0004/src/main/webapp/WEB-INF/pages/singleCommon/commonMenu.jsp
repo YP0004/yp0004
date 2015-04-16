@@ -26,7 +26,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="active"><a href="${pageContext.request.contextPath}/myCenter/forwardMyAllOrderList.action"><i class="fa fa-circle-o"></i> 所有订单</a></li>
-                <li><a href="index2.html"><i class="fa fa-circle-o"></i> 待付款订单</a></li>
+                <li><a href="${pageContext.request.contextPath}/myCenter/forwardMyUnPayOrderList.action"><i class="fa fa-circle-o"></i> 待付款订单</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -36,15 +36,15 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>所有课程</a></li>
-                <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i>待授权课程</a></li>
+                <li><a href="${pageContext.request.contextPath}/myProduct/forwardMyProductList.action"><i class="fa fa-circle-o"></i>所有课程</a></li>
+                <li><a href="${pageContext.request.contextPath}/myProduct/forwardMyUnAuthProductList.action"><i class="fa fa-circle-o"></i>待授权课程</a></li>
             </ul>
         </li>
-        <li>
+<%--        <li>
             <a href="${pageContext.request.contextPath}/myCenter/forwardMyCenterIndex.action">
                 <i class="fa fa-th"></i> <span>访问记录</span> <small class="label pull-right bg-green">new</small>
             </a>
-        </li>
+        </li>--%>
 
         <li class="treeview">
             <a href="#">
@@ -53,8 +53,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i>未读消息</a></li>
-                <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> 所有消息</a></li>
+                <%--<li><a href="#"><i class="fa fa-circle-o"></i>未读消息</a></li>--%>
+                <li><a href="${pageContext.request.contextPath}/myCenter/forwardMyMessage.action"><i class="fa fa-circle-o"></i> 所有消息</a></li>
 
             </ul>
         </li>
@@ -64,9 +64,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> 基本信息</a></li>
-                <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> 密码修改</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> 头像上传</a></li>
+                <li><a href="${pageContext.request.contextPath}/myCenter/forwardMyInfo.action"><i class="fa fa-circle-o"></i> 基本信息</a></li>
+<%--                <li><a href="#"><i class="fa fa-circle-o"></i> 密码修改</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> 头像上传</a></li>--%>
             </ul>
         </li>
     </ul>

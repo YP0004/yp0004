@@ -46,52 +46,82 @@
         <section class="content-header">
             <h1>
                 我的课程
-                <small>未授权课程</small>
+                <small>课程详情</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 我的中心</a></li>
+                <li><a href="#"><i class="fa fa-dashboard"></i>我的中心</a></li>
                 <li><a href="#">我的课程</a></li>
-                <li class="active">未授权课程</li>
+                <li class="active">课程详情</li>
             </ol>
         </section>
+
         <!-- Main content -->
-        <section class="content">
+        <section class="invoice">
+            <!-- title row -->
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="box box-primary">
-                        <div class="box-header">
-                            <h3 class="box-title">未授权课程</h3>
-                        </div><!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover"  style="vertical-align: middle;text-align: center;">
-                                <tr>
-                                    <th style="text-align: center">课程名称</th>
-                                    <th style="text-align: center">授权状态</th>
-                                    <th style="text-align: center">申请日期</th>
-                                    <th style="text-align: center">授权日期</th>
-                                    <th style="text-align: center">授权人</th>
-                                    <th style="text-align: center">操作</th>
-                                </tr>
-                                <c:forEach items="${myUnAuthProductList}" var="myUnAuthProduct">
-                                    <tr>
-                                        <td  style="vertical-align: middle;text-align: center;">${myUnAuthProduct.product.productName}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">
-                                            <span class="label label-success">${myUnAuthProduct.authorizeStatusDic.dicCn}</span>
-                                        </td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myUnAuthProduct.aceptDate}</td>
-                                        <td  style="vertical-align: middle;text-align: center;">${myUnAuthProduct.authorizeDate}</td>
-                                        <td  style="vertical-align: middle;text-align: center;"></td>
-                                        <td  style="vertical-align: middle;text-align: center;">
-                                                <a href="#"><button class="btn btn-sm btn-danger">申请授权</button></a>&nbsp;<a href="${pageContext.request.contextPath}/myProduct/forwardMyProductDetail.action?id=${myUnAuthProduct.id}"><button class="btn btn-sm btn-primary">我的课程详情</button></a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </table>
-                        </div><!-- /.box-body -->
-                    </div><!-- /.box -->
+                    <h2 class="page-header">
+                        <i class="fa fa-globe"></i>课程详情
+                    </h2>
+                </div><!-- /.col -->
+            </div>
+            <!-- info row -->
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>课程名:</strong><br>
+                        ${myProduct.product.productName}
+                    </address>
+                </div><!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>机器码</strong><br>
+                        ${myProduct.smartCode}
+                    </address>
+                </div><!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>播放码</strong><br>
+                        ${myProduct.playerCode}
+                    </address>
+                </div><!-- /.col -->
+
+
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>授权状态</strong><br>
+                        ${myProduct.authorizeStatusDic.dicCn}
+                    </address>
+                </div><!-- /.col -->
+
+
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>申请授权时间</strong><br>
+                        ${myProduct.aceptDate}
+                    </address>
+                </div><!-- /.col -->
+
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>授权时间</strong><br>
+                        ${myProduct.authorizeDate}
+                    </address>
+                </div><!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                    <address>
+                        <strong>授权人</strong><br>
+                    </address>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+                <div class="col-xs-12">
+                            <a href="#"><button class="btn btn-danger pull-right">申请授权</button></a>&nbsp;<button class="btn btn-success pull-right" onclick="history.go(-1)">返回</button>
                 </div>
             </div>
         </section><!-- /.content -->
+        <div class="clearfix"></div>
     </div><!-- /.content-wrapper -->
     <footer class="main-footer">
         <%@ include file="../singleCommon/commonFooter.jsp"%>

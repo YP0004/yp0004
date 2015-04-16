@@ -67,13 +67,13 @@
                     <!-- Menu Body -->
                     <li class="user-body">
                         <div class="col-xs-4 text-center">
-                            <a href="#">选购课程</a>
+                            <a href="${pageContext.request.contextPath}/product/forwardProductList.action">选购课程</a>
                         </div>
                         <div class="col-xs-4 text-center">
-                            <a href="#">学习课程</a>
+                            <a href="${pageContext.request.contextPath}/myProduct/forwardMyProductList.action">我的课程</a>
                         </div>
                         <div class="col-xs-4 text-center">
-                            <a href="#">我的订单</a>
+                            <a href="${pageContext.request.contextPath}/myCenter/forwardMyAllOrderList.action">我的订单</a>
                         </div>
                     </li>
                     <!-- Menu Footer-->
@@ -82,7 +82,7 @@
                             <a href="#" class="btn btn-default btn-flat">个人信息</a>
                         </div>
                         <div class="pull-right">
-                            <a href="#" class="btn btn-default btn-flat">退出</a>
+                            <a href="${pageContext.request.contextPath}/system/logout.action" class="btn btn-default btn-flat">退出</a>
                         </div>
                     </li>
                 </ul>

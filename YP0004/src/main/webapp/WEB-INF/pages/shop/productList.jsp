@@ -109,9 +109,10 @@
                                 <div class="title">
                                     <h3><a href="#">${product.productName}</a></h3>
 
-                                    <p>正在更新</p>
+                                    <p>${product.productStatusDic.dicCn}</p>
+                                    <span class="price">￥${product.productPrice}</span>
                                 </div>
-                                <span class="price">￥${product.productPrice}</span>
+
                             </div>
                         </li>
                     </c:forEach>
