@@ -91,13 +91,14 @@
                 </c:when>
 
             </c:choose>
-
+            </tbody>
+            <tfoot>
             <tr>
                 <td class="actions" colspan="6">
                     <a href="${pageContext.request.contextPath}/alipay/forwardPay.action?orderId=${order.orderId}"><input type="button" value="立即支付" name="proceed" class="btn btn-primary btn-lg"/></a>
                 </td>
             </tr>
-            </tbody>
+            </tfoot>
         </table>
 
         <div class="cart-collaterals">

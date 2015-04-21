@@ -4,12 +4,21 @@ import com.yfann.web.model.Order;
 import com.yfann.web.model.Product;
 import com.yfann.web.vo.ShopCar;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
  * Created by Simon on 2015/4/2.
  */
 public interface OrderService {
+
+    /**
+     * 根据主键删除购物车项
+     * @param shopCarItemId
+     * @return
+     */
+    public void removeShopCarItem(String shopCarItemId,HttpServletRequest request, HttpServletResponse response);
 
     /**
      * 根据用户名查询所有订单

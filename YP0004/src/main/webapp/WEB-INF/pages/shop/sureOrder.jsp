@@ -83,14 +83,15 @@
                     </c:when>
 
                 </c:choose>
-
+                </tbody>
+                <tfoot>
                 <tr>
                     <td class="actions" colspan="6">
                         <a href="${pageContext.request.contextPath}/order/forwardShopCar.action"><input type="button" value="修改购物车" name="update_cart" class="btn btn-default btn-lg"></a>
                         <a href="${pageContext.request.contextPath}/order/forwardPayOrder.action"><input type="submit" value="生成订单" name="proceed" class="btn btn-primary btn-lg"></a>
                     </td>
                 </tr>
-                </tbody>
+                </tfoot>
             </table>
 
             <div class="cart-collaterals">

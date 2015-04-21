@@ -37,6 +37,18 @@ public class OrderAction {
     @Autowired
     private OrderService orderService;
 
+
+    /**
+     * 删除购物项
+     * @param shopCarItemId
+     * @return
+     */
+    @RequestMapping("/removeShopCarItem")
+    public String removeShopCarItem(String shopCarItemId,HttpServletRequest request, HttpServletResponse response){
+        orderService.removeShopCarItem(shopCarItemId,request,response);
+        return "redirect:/order/forwardShopCar.action";
+    }
+
     /**
      * 跳转到支付订单
      *

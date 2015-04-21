@@ -11,6 +11,8 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +23,25 @@ import java.util.UUID;
 public class OrderServiceImple implements OrderService {
     @Autowired
     private OrderDao orderDao;
+
+    /**
+     * 根据主键删除购物车项
+     *
+     * @param shopCarItemId
+     * @return
+     */
+    @Override
+    public void removeShopCarItem(String shopCarItemId,HttpServletRequest request, HttpServletResponse response) {
+        ShopCar shopCar = (ShopCar)request.getSession().getAttribute("shopCar");
+        if (StringUtils.isNotBlank(shopCarItemId) && shopCar != null && shopCar.getShopCarItems() != null){
+            List<ShopCarItem> shopCarItemList =  shopCar.getShopCarItems();
+            for (ShopCarItem shopCarItem : shopCarItemList){
+                    if (shopCarItem.getId().equals(shopCarItemId)){
+                        shopCarItemList.remove(shopCarItem);
+                    }
+            }
+        }
+    }
 
     /**
      * 根据用户名查询所有订单
