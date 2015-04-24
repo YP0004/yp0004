@@ -1,9 +1,13 @@
 package com.yfann.web.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.yfann.web.model.Product;
 import com.yfann.web.model.User;
+import com.yfann.web.service.ProductService;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.utils.UUIDCreate;
 import com.yfann.web.vo.ApplicationValue;
@@ -26,18 +30,20 @@ public class SystemAction {
     @Autowired
     private SystemService systemService;
 
+    @Autowired
+    private ProductService productService;
+
     /**
      * 注册
      * @param userVo
      * @return
      */
-    @RequestMapping("regist")
+    @RequestMapping("/regist")
     public String regist(com.yfann.web.vo.User userVo){
         if (userVo != null){
             if (userVo.getPassword().equals(userVo.getRePassword())){
                 User user = new User();
                 user.setId(UUIDCreate.takeUUID());
-                user.setUserId(userVo.getUserId());
                 user.setPassword(userVo.getPassword());
                 user.setEmail(userVo.getEmail());
                 systemService.regist(user);
@@ -65,7 +71,15 @@ public class SystemAction {
      * @return
      */
     @RequestMapping("/forwardIndex")
-    public String forwardIndex() {
+    public String forwardIndex(Model model) {
+   /*      List<Product> productListTemp =  productService.findAllProductList();
+       List<Product> productList = new ArrayList<Product>();
+        for (int i = 0;i < 8;i++){
+            if (productList.size() <= i+1){
+                productList.add(productListTemp.get(i));
+            }
+        }
+        model.addAttribute("productList",productList);*/
         return "shop/index";
     }
 

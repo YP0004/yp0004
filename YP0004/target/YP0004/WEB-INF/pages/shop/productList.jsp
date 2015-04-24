@@ -20,12 +20,12 @@
         /**
          * 添加到购物车
          */
-        function addBuyCar(productId){
+        function addBuyCar(productId) {
             $.ajax({
                 type: "POST",
                 url: "${pageContext.request.contextPath}/order/addShopCar.action",
-                data: {id:productId},
-                success: function(data){
+                data: {id: productId},
+                success: function (data) {
                     alert(data);
                     window.location.reload();
                 }
@@ -87,18 +87,19 @@
                 </aside>
             </div>
 
-            <div class="col-sm-9">
-
+            <div class="col-sm-9 col-lg-9">
                 <ul class="products row">
-                    <c:forEach items="${productList}" var="product">
-                        <li class="col-sm-4">
+                    <c:forEach items="${productList}" var="product" varStatus="productStatus">
+
+                        <li class="col-sm-4 col-lg-4">
                             <div class="product">
                                 <div class="thumbnail">
                                     <a href="${pageContext.request.contextPath}/product/forwardProduct.action?id=${product.id}"><img
                                             src="${pageContext.request.contextPath}/product/takeProductHeadImg.action?id=${product.id}"
-                                            style="width: 263px;height: 388px; max-width: 263px;max-height: 388px;"
+                                            style="width: 263px;height: 288px; max-width: 263px;max-height: 288px;"
                                             alt=""></a>
-                                    <a href="#" class="add-to-cart" title="添加到购物车" onclick="addBuyCar('${product.id}');">
+                                    <a href="#" class="add-to-cart" title="添加到购物车"
+                                       onclick="addBuyCar('${product.id}');">
                   <span class="fa-stack fa-2x">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-shopping-cart  fa-stack-1x fa-inverse"></i>
@@ -115,6 +116,10 @@
 
                             </div>
                         </li>
+
+
+
+
                     </c:forEach>
                 </ul>
 
