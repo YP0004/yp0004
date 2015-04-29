@@ -85,7 +85,7 @@ public class AlipaySubmit {
 
 		StringBuffer sbHtml = new StringBuffer();
 
-		sbHtml.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"><html></head>");
+		sbHtml.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"><html><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /></head>");
 		sbHtml.append("<form id=\"alipaysubmit\" name=\"alipaysubmit\" action=\"" + ALIPAY_GATEWAY_NEW
 				+ "_input_charset=" + AlipayConfig.input_charset + "\" method=\"" + strMethod + "\">");
 

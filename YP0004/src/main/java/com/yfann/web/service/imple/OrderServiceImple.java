@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,10 +36,13 @@ public class OrderServiceImple implements OrderService {
         ShopCar shopCar = (ShopCar)request.getSession().getAttribute("shopCar");
         if (StringUtils.isNotBlank(shopCarItemId) && shopCar != null && shopCar.getShopCarItems() != null){
             List<ShopCarItem> shopCarItemList =  shopCar.getShopCarItems();
-            for (ShopCarItem shopCarItem : shopCarItemList){
-                    if (shopCarItem.getId().equals(shopCarItemId)){
-                        shopCarItemList.remove(shopCarItem);
-                    }
+            Iterator<ShopCarItem> iterator =  shopCarItemList.iterator();
+            ShopCarItem shopCarItemTemp = null;
+            while (iterator.hasNext()){
+                shopCarItemTemp = iterator.next();
+                if (shopCarItemTemp.getId().equals(shopCarItemId)){
+                    iterator.remove();
+                }
             }
         }
     }

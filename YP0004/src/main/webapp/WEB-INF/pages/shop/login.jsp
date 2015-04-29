@@ -55,19 +55,16 @@
 
 				<h3>登陆</h3>
 				<div class="gap-20"></div>
-				<form role="form" method="post"
+				<form id="loginForm" role="form" method="post"
 					action="${pageContext.request.contextPath}/system/login.action">
 					<div class="form-group">
-						<input type="text" class="form-control input-lg popover-show"
-							id="exampleInputEmail" name="userId" placeholder="请输入用户名"
-							data-container="body" data-toggle="popover"
-							data-placement="bottom"
-							data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus." />
+						<input type="text" class="form-control input-lg"
+							id="exampleInputEmail" name="userId" placeholder="请输入用户名" />
 					</div>
 					<div class="form-group">
+
 						<input type="password" class="form-control input-lg"
-							id="exampleInputPassword" name="password" placeholder="请输入密码">
+							id="exampleInputPassword" name="password" placeholder="请输入密码"/>
 					</div>
 					<div class="checkbox pull-left">
 						<label> <input type="checkbox"> 记住我 </label>
@@ -125,12 +122,27 @@ sagittis lacus vel augue laoreet rutrum faucibus." />
 		src="${pageContext.request.contextPath}/shop/js/jquery.jpanelmenu.min.js"></script>
 	<script src="${pageContext.request.contextPath}/shop/js/main.js"></script>
 	<script>
-		$(function() {
-			$(".popover-options a").popover({
-				html : true,
-				
-			});
-		});
+
+        $(document).ready(
+                function(){
+                    $('#exampleInputEmail').popover({
+                        content:"请输入用户名",
+                        placement:'top',
+                        trigger:'hover'
+                    });
+
+                    $('#exampleInputPassword').popover({
+                        content: "请输入密码",
+                        placement:'top',
+                        trigger: 'hover'
+                    });
+                });
+
+
+/*        $.post('url',{},function(){
+
+        },'text');*/
+
 	</script>
 
 </body>

@@ -21,11 +21,11 @@
         /**
          * 添加到购物车
          */
-        function addBuyCar(id){
+        function addBuyCar(productId){
             $.ajax({
                 type: "POST",
                 url: "${pageContext.request.contextPath}/order/addShopCar.action",
-                data: id,
+                data: {id: productId},
                 success: function(data){
                     alert(data);
                     window.location.reload();

@@ -39,8 +39,15 @@ public class SystemAction {
      * @return
      */
     @RequestMapping("/regist")
-    public String regist(com.yfann.web.vo.User userVo){
+    //TODO BUG
+    public String regist(com.yfann.web.vo.User userVo,Model model){
+        Map<String,String> errorMessage = new HashMap<String,String>();
         if (userVo != null){
+
+/*            if(systemService.findUserByUserId(userVo.getUserId())){
+
+            }*/
+
             if (userVo.getPassword().equals(userVo.getRePassword())){
                 User user = new User();
                 user.setId(UUIDCreate.takeUUID());
@@ -48,7 +55,13 @@ public class SystemAction {
                 user.setEmail(userVo.getEmail());
                 systemService.regist(user);
             }
+        }else {
+            errorMessage.put("userId","请输入用户名");
+            model.addAttribute("errorMessage",errorMessage);
         }
+
+
+
         return "redirect:" + action_pri + "/forwardLogin" + ApplicationValue.APP_LAST_NAME;
     }
 
@@ -72,14 +85,8 @@ public class SystemAction {
      */
     @RequestMapping("/forwardIndex")
     public String forwardIndex(Model model) {
-   /*      List<Product> productListTemp =  productService.findAllProductList();
-       List<Product> productList = new ArrayList<Product>();
-        for (int i = 0;i < 8;i++){
-            if (productList.size() <= i+1){
-                productList.add(productListTemp.get(i));
-            }
-        }
-        model.addAttribute("productList",productList);*/
+         List<Product> productListTemp =  productService.findAllProductList();
+        model.addAttribute("productListTemp",productListTemp);
         return "shop/index";
     }
 

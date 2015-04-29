@@ -75,7 +75,7 @@
 
 
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>aaa.jsp</welcome-file>
     </welcome-file-list>
 
     <display-name>YP0004</display-name>

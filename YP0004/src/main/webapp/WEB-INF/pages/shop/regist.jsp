@@ -55,7 +55,7 @@
                 <div class="gap-20"></div>
                 <form role="form" action="${pageContext.request.contextPath}/system/regist.action">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="exampleInputPassword" name="userId" placeholder="请输入您的用户名"/>
+                        <input type="text" class="form-control input-lg" id="exampleInputPassword" name="userId" placeholder="请输入您的用户名" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."/>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control input-lg" id="exampleInputPassword" name="password" placeholder="请输入您的密码"/>
