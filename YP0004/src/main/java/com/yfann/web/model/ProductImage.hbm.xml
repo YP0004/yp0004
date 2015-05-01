@@ -5,8 +5,8 @@
 <hibernate-mapping>
 
     <class name="com.yfann.web.model.ProductImage" table="t_product_image" schema="" catalog="yp0004">
-        <id name="id" column="id"/>
-        <property name="productId" column="product_id"/>
-        <property name="productImage" column="product_image"/>
+        <id name="id" column="id" type="java.lang.String" length="32"/>
+        <property name="productId" column="product_id" type="java.lang.String" length="32"/>
+        <property name="productImage" column="product_image" type="byte[]"/>
     </class>
 </hibernate-mapping>

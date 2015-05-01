@@ -5,7 +5,7 @@
 <hibernate-mapping>
 
     <class name="com.yfann.web.model.ProductKind" table="t_product_kind" schema="" catalog="yp0004">
-        <id name="id" column="id"/>
-        <property name="kindName" column="kind_name"/>
+        <id name="id" column="id" type="java.lang.String" length="32"/>
+        <property name="kindName" column="kind_name" type="java.lang.String" length="50"/>
     </class>
 </hibernate-mapping>
