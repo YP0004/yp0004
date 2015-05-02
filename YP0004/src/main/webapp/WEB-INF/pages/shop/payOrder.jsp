@@ -68,8 +68,8 @@
             </thead>
             <tbody>
             <c:choose>
-                <c:when test="${sessionScope.get('shopCar') != null && sessionScope.get('shopCar').shopCarItems != null && sessionScope.get('shopCar').shopCarItems.size() > 0}">
-                    <c:forEach items="${sessionScope.get('shopCar').shopCarItems}" var="shopCarItem">
+                <c:when test="${order != null && orderDetailList != null}">
+                    <c:forEach items="${orderDetailList}" var="shopCarItem">
                         <tr class="cart_item">
                             <td class="product-desc">
                                 <dl>
@@ -81,10 +81,10 @@
                                 </dl>
                             </td>
                             <td class="product-qty">
-                                <input type="number" size="4" class="qty text form-control" title="Qty" value="${shopCarItem.count}" name="qty" step="1" disabled="disabled"/>
+                                <input type="number" size="4" class="qty text form-control" title="Qty" value="${shopCarItem.productCount}" name="qty" step="1" disabled="disabled"/>
                             </td>
                             <td class="product-price">
-                                <h3>￥${shopCarItem.subCount}</h3>
+                                <h3>￥${shopCarItem.price}</h3>
                             </td>
                         </tr>
                     </c:forEach>

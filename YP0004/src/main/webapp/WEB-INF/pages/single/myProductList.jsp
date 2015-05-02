@@ -60,7 +60,7 @@
                 <div class="col-xs-12">
                     <div class="box box-primary">
                         <div class="box-header">
-                            <h3 class="box-title">我的订单</h3>
+                            <h3 class="box-title">我的课程</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
                             <table class="table table-hover"  style="vertical-align: middle;text-align: center;">

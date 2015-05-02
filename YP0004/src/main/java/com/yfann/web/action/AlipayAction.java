@@ -39,12 +39,11 @@ public class AlipayAction {
         // 必填，不能修改
         // 服务器异步通知页面路径
         // 需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
-
-        String notify_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/alipay/notifyUrl" + ApplicationValue.APP_LAST_NAME;
+        String notify_url = request.getScheme() + "://" + "10.10.1.51" + ":" + request.getServerPort() + request.getContextPath() + "/alipay/notifyUrl" + ApplicationValue.APP_LAST_NAME;
 
         // 页面跳转同步通知页面路径
         // 需http://格式的完整路径，不能加?id=123这类自定义参数
-        String return_url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/alipay!returnUrl" + ApplicationValue.APP_LAST_NAME;
+        String return_url = request.getScheme() + "://" + "10.10.1.51" + ":" + request.getServerPort() + request.getContextPath() + "/alipay/returnUrl" + ApplicationValue.APP_LAST_NAME;
         // 卖家支付宝帐户
         String seller_email = new String("itedu365@126.com".getBytes(),"utf-8");
 
@@ -80,7 +79,7 @@ public class AlipayAction {
         //防钓鱼时间戳
         String anti_phishing_key = new String(AlipaySubmit.query_timestamp().getBytes(),"utf-8");
         //客户端的IP地址
-        String exter_invoke_ip = new String(request.getRemoteAddr().getBytes(),"utf-8");
+        String exter_invoke_ip = new String("10.10.1.51".getBytes(),"utf-8");
         // 非局域网的外网IP地址，如：221.0.0.1
 
         // ////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +123,12 @@ public class AlipayAction {
                 valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
             }
             // 乱码解决，这段代码在出现乱码时使用。如果mysign和sign不相等也可以使用这段代码转化
-            // valueStr = new String(valueStr.getBytes("ISO-8859-1"), "gbk");
+            try {
+                valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
+            }catch (UnsupportedEncodingException e){
+                e.printStackTrace();
+            }
+
             params.put(name, valueStr);
         }
 
@@ -137,16 +141,6 @@ public class AlipayAction {
             e.printStackTrace();
         }
 
-        // 支付宝交易号
-        // String trade_no = "";
-        // try {
-        // trade_no = new
-        // String(request.getParameter("trade_no").getBytes("ISO-8859-1"),
-        // "UTF-8");
-        // } catch (UnsupportedEncodingException e) {
-        // e.printStackTrace();
-        // }
-
         // 交易状态
         String trade_status = "";
         try {
@@ -156,18 +150,12 @@ public class AlipayAction {
         }
         System.out.println(trade_status);
 
-        // 获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
-
         if (AlipayNotify.verify(params)) {// 验证成功
-            // ////////////////////////////////////////////////////////////////////////////////////////
-            // 请在这里加上商户的业务逻辑程序代码
-
-            // ——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-
             if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
                 Order orderResult = orderService.findOrderByOrderId(out_trade_no);
                 //将订单设置为已支付
                 orderResult.setOrderStatus(DicValue.OrderStatus.ED_PAY);
+                orderResult.setPayTime(new Date());
                 //获取该订单课程详情
                 List<OrderDetail> orderDetailList = new ArrayList<OrderDetail>(orderResult.getOrderDetailSet());
                 List<MyProduct> myProductList = new ArrayList<MyProduct>();
@@ -175,7 +163,7 @@ public class AlipayAction {
                     for (int i = 0; i < orderDetail.getProductCount();i++){
                         MyProduct myProduct = new MyProduct();
                         myProduct.setId(UUIDCreate.takeUUID());
-                        myProduct.setProductId(orderDetail.getProductId());
+                        myProduct.setProduct(orderDetail.getProduct());
                         myProduct.setUserId(orderResult.getUserId());
                         myProduct.setAuthorizeStatus(DicValue.ProductAuthorizeStatus.UN_AUTHORIZE);
                         myProductList.add(myProduct);
@@ -197,73 +185,6 @@ public class AlipayAction {
     @RequestMapping("/returnUrl")
     public String returnUrl(HttpServletRequest request) {
         notifyUrl(request);
-/*        Map<String, String> params = new HashMap<String, String>();
-        Map requestParams = request.getParameterMap();
-        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
-            String name = (String) iter.next();
-            String[] values = (String[]) requestParams.get(name);
-            String valueStr = "";
-            for (int i = 0; i < values.length; i++) {
-                valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
-            }
-            // 乱码解决，这段代码在出现乱码时使用。如果mysign和sign不相等也可以使用这段代码转化
-            try {
-                valueStr = new String(valueStr.getBytes("ISO-8859-1"), "utf-8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            params.put(name, valueStr);
-        }
-
-        // 获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以下仅供参考)//
-        // 商户订单号
-        // try {
-        // String out_trade_no = new
-        // String(request.getParameter("out_trade_no").getBytes("ISO-8859-1"),
-        // "UTF-8");
-        // } catch (UnsupportedEncodingException e) {
-        // e.printStackTrace();
-        // }
-
-        // 支付宝交易号
-        // try {
-        // String trade_no = new
-        // String(request.getParameter("trade_no").getBytes("ISO-8859-1"),
-        // "UTF-8");
-        // } catch (UnsupportedEncodingException e) {
-        // e.printStackTrace();
-        // }
-
-        // 交易状态
-        String trade_status = "";
-        try {
-            trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        // 获取支付宝的通知返回参数，可参考技术文档中页面跳转同步通知参数列表(以上仅供参考)//
-
-        // 计算得出通知验证结果
-        boolean verify_result = AlipayNotify.verify(params);
-
-        if (verify_result) {// 验证成功
-            // ////////////////////////////////////////////////////////////////////////////////////////
-            // 请在这里加上商户的业务逻辑程序代码
-
-            // ——请根据您的业务逻辑来编写程序（以下代码仅作参考）——
-            if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
-                // 判断该笔订单是否在商户网站中已经做过处理
-                // 如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
-                // 如果有做过处理，不执行商户的业务程序
-                return "forwardsuccess";
-            }
-
-        } else {
-            // 该页面可做页面美工编辑
-            return "forwardfail";
-        }
-        return "forwardmyUnPayOrderList";*/
-        return null;
+        return "redirect:/product/forwardProductList.action";
     }
 }

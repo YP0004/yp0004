@@ -40,19 +40,19 @@
                         <a href="${pageContext.request.contextPath}/product/forwardProductList.action">查看课程</a>
                     </li>
                     <li class="dropdown">
-                        <a href="category.html">最新课程</a>
+                        <a href="${pageContext.request.contextPath}/product/forwardProductList.action">最新课程</a>
                     </li>
                     <li class="dropdown">
                         <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">课程分类 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">云计算系列</a></li>
-                            <li><a href="#">架构师系列</a></li>
-                            <li><a href="#">Web前端</a></li>
-                            <li><a href="#">企业级开发系列</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">云计算系列</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">架构师系列</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">Web前端</a></li>
+                            <li><a href="${pageContext.request.contextPath}/product/forwardProductList.action">企业级开发系列</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">最热课程</a>
+                        <a href="${pageContext.request.contextPath}/product/forwardProductList.action" class="dropdown-toggle" data-toggle="dropdown">最热课程</a>
                     </li>
                 </ul>
             </div>

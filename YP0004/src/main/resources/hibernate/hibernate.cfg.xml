@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <!-- sessionFactory代表一个数据库的描述 -->
     <session-factory>
-        <property name="connection.password">root</property>
+        <property name="connection.password">yfann2014</property>
         <property name="connection.username">root</property>
 
         <property name="hibernate.connection.driver_class">
@@ -35,6 +35,9 @@
 
         <!--hibernate自动提交事务   此处应交由spring管理 生产环境该配置注视-->
         <property name="hibernate.connection.autocommit">true</property>
+
+        <property name="connection.useUnicode">true</property>
+        <property name="connection.characterEncoding">UTF-8</property>
 
 
     </session-factory>

@@ -53,7 +53,6 @@ public class MyProductDaoImple extends BaseDaoImple<MyProduct> implements MyProd
                 hibernateTemplate.save(myProductList.get(i));
                 //每执行50条刷新一次缓存
                 if (i % 50 == 0){
-                    hibernateTemplate.clear();
                     hibernateTemplate.flush();
                 }
             }

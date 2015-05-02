@@ -28,7 +28,7 @@
             <nav id="language-selector">
                 <ul class="nav nav-pills">
                     <li class="dropdown">
-                        <a href="#"><%--中文站--%>365IT学院欢迎您</a>
+                        <a href="#">365IT学院欢迎您</a>
                     </li>
                 </ul>
             </nav>
@@ -67,7 +67,7 @@
                     <ul class="nav navbar-nav">
                         <c:choose>
                             <c:when test="${sessionScope.get('user') != null}">
-                                <li><a href="#">${sessionScope.get('user').userId}欢迎您回来</a></li>
+                                <li><a style="text-decoration:underline" href="${pageContext.request.contextPath}/myCenter/forwardMyCenterIndex.action">${sessionScope.get('user').userId}欢迎您回来</a></li>
                                 <li><a href="${pageContext.request.contextPath}/myCenter/forwardMyCenterIndex.action">个人空间</a></li>
                                 <li><a href="${pageContext.request.contextPath}/system/logout.action">退出登陆</a></li>
 

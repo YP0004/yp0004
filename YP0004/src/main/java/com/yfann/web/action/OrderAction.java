@@ -17,14 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Date;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 
 /**
  * 订单控制器
@@ -86,8 +83,9 @@ public class OrderAction {
             order.setOrderDetailSet(new HashSet<OrderDetail>(orderDetailList));
             orderService.saveOrder(order);
             //清空购物车
-//            request.getSession().setAttribute("shopCar", null);
+            request.getSession().removeAttribute("shopCar");
             model.addAttribute("order", order);
+            model.addAttribute("orderDetailList",new ArrayList<OrderDetail>(order.getOrderDetailSet()));
         }
         return "shop/payOrder";
     }

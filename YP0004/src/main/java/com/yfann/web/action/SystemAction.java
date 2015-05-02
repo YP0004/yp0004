@@ -51,6 +51,7 @@ public class SystemAction {
             if (userVo.getPassword().equals(userVo.getRePassword())){
                 User user = new User();
                 user.setId(UUIDCreate.takeUUID());
+                user.setUserId(userVo.getUserId());
                 user.setPassword(userVo.getPassword());
                 user.setEmail(userVo.getEmail());
                 systemService.regist(user);
