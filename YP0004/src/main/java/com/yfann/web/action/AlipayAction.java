@@ -39,11 +39,11 @@ public class AlipayAction {
         // 必填，不能修改
         // 服务器异步通知页面路径
         // 需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
-        String notify_url = request.getScheme() + "://" + "10.10.1.51" + ":" + request.getServerPort() + request.getContextPath() + "/alipay/notifyUrl" + ApplicationValue.APP_LAST_NAME;
+        String notify_url = "http://www.365itedu.com" + "/alipay/notifyUrl" + ApplicationValue.APP_LAST_NAME;
 
         // 页面跳转同步通知页面路径
         // 需http://格式的完整路径，不能加?id=123这类自定义参数
-        String return_url = request.getScheme() + "://" + "10.10.1.51" + ":" + request.getServerPort() + request.getContextPath() + "/alipay/returnUrl" + ApplicationValue.APP_LAST_NAME;
+        String return_url = "http://www.365itedu.com" + "/alipay/returnUrl" + ApplicationValue.APP_LAST_NAME;
         // 卖家支付宝帐户
         String seller_email = new String("itedu365@126.com".getBytes(),"utf-8");
 
