@@ -1,6 +1,19 @@
 package com.yfann.web.action;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.yfann.web.model.Order;
 import com.yfann.web.model.OrderDetail;
 import com.yfann.web.model.Product;
@@ -12,16 +25,6 @@ import com.yfann.web.vo.ApplicationValue;
 import com.yfann.web.vo.DicValue;
 import com.yfann.web.vo.ShopCar;
 import com.yfann.web.vo.ShopCarItem;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * 订单控制器

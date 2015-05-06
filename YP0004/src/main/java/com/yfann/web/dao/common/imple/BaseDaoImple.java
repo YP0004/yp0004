@@ -1,12 +1,13 @@
 package com.yfann.web.dao.common.imple;
 
-import com.yfann.web.dao.common.BaseDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
-
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+
+import com.yfann.web.dao.common.BaseDao;
 
 /**
  * 通用DAO
@@ -16,7 +17,8 @@ public class BaseDaoImple<T> implements BaseDao<T>{
     protected HibernateTemplate hibernateTemplate;
     /*实体字节码**/
     private Class<T> modelClass;
-    public BaseDaoImple(){
+    @SuppressWarnings("unchecked")
+	public BaseDaoImple(){
         //获取泛型参数类型
         ParameterizedType parameterizedType = (ParameterizedType)getClass().getGenericSuperclass();
         modelClass = (Class)parameterizedType.getActualTypeArguments()[0];

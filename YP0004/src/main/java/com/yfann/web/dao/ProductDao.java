@@ -1,12 +1,11 @@
 package com.yfann.web.dao;
 
+import java.util.List;
+
 import com.yfann.web.dao.common.BaseDao;
 import com.yfann.web.model.Product;
-import com.yfann.web.model.ProductImage;
 import com.yfann.web.model.ProductKind;
 import com.yfann.web.model.ProductLevel;
-
-import java.util.List;
 
 /**
  * Created by Simon on 2015/4/2.

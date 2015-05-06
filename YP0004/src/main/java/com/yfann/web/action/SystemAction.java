@@ -1,9 +1,15 @@
 package com.yfann.web.action;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yfann.web.model.Product;
 import com.yfann.web.model.User;
@@ -11,14 +17,6 @@ import com.yfann.web.service.ProductService;
 import com.yfann.web.service.SystemService;
 import com.yfann.web.utils.UUIDCreate;
 import com.yfann.web.vo.ApplicationValue;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 系统控制器
